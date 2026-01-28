@@ -1,0 +1,129 @@
+openssl s_client -connect 192.168.200.3:993
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 C = MY, ST = KL, L = APU, O = SNA, CN = bnaserver.bungkus.org
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 C = MY, ST = KL, L = APU, O = SNA, CN = bnaserver.bungkus.org
+verify return:1
+---
+Certificate chain
+ 0 s:C = MY, ST = KL, L = APU, O = SNA, CN = bnaserver.bungkus.org
+   i:C = MY, ST = KL, L = APU, O = SNA, CN = bnaserver.bungkus.org
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Jan 28 04:21:32 2026 GMT; NotAfter: Jan 28 04:21:32 2027 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIDjTCCAnWgAwIBAgIUR5mEZGsmorrbt+znXCSuh2lFZ4wwDQYJKoZIhvcNAQEL
+BQAwVjELMAkGA1UEBhMCTVkxCzAJBgNVBAgMAktMMQwwCgYDVQQHDANBUFUxDDAK
+BgNVBAoMA1NOQTEeMBwGA1UEAwwVYm5hc2VydmVyLmJ1bmdrdXMub3JnMB4XDTI2
+MDEyODA0MjEzMloXDTI3MDEyODA0MjEzMlowVjELMAkGA1UEBhMCTVkxCzAJBgNV
+BAgMAktMMQwwCgYDVQQHDANBUFUxDDAKBgNVBAoMA1NOQTEeMBwGA1UEAwwVYm5h
+c2VydmVyLmJ1bmdrdXMub3JnMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAq0G/ZLGUUKBgQ2qT8Yzd0ZbZZcikr6xzHsfvEaMlP9ftpC6iOZ0Q6rL1n9yA
+q20flTBxVN3D31IBQ5c5QKKh5TzRBAbZWTsFzupPNq+go8NOYnudj5EAXK0qL6uE
+pt1i6ogsRCcW23C+hGT/H5FH7cOp9R19U2Qxfs11OTvfXD/bqoZszPtZhxyYpGul
+R+gEIaGuto0UoonBxED7TGwyBiRQx3G4p4ReOkEGK1RPBtAFt77oUQ6519d6iw7a
+5nMEYVmJSB8jv2B21QSiOOPibF+cwfpsB45y6r/X559iv5iroW9qAeQTjk1mz4+7
+MTVtiOvPv/36TulI649b16ljNQIDAQABo1MwUTAdBgNVHQ4EFgQU2iIJhrSIL6oE
+9oj06mIQClYRNrAwHwYDVR0jBBgwFoAU2iIJhrSIL6oE9oj06mIQClYRNrAwDwYD
+VR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAihv9LJloKvFsUDriisCq
+dkD9RxXDTnl1h53TQZ24q4uR96kqOeB58cbNEJ4JGxHXxBvrCUvoW+G8NwvpV0JM
+Fu71j/RxDKAJJgLC9dAL8sU6/HOX4gWld45U8hy7EiMfCgvUNp02KFQD5bU95SYq
+8mHcthGTZGwS5rKrZF6Kfnh63E/CELu7JTs+uKQzS7llu4GWWb0p/0tC9mUMmiIc
+GLCAqM9zxQpOQtWK+L1kPmCls0mu9zpQ6qble+wmG3OgX1vNETQwASRKwAqisjK9
+l9KbLjyqea+3nJsbG3u3kKMQ8QAINiRX5BLNrI4BPbAt0tvE+HNzobTE0gB4D+2+
+0Q==
+-----END CERTIFICATE-----
+subject=C = MY, ST = KL, L = APU, O = SNA, CN = bnaserver.bungkus.org
+issuer=C = MY, ST = KL, L = APU, O = SNA, CN = bnaserver.bungkus.org
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1469 bytes and written 373 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 6D879D701E62FA85545D5C4B20F86D4C79392E9233CDE19D192C42691FAB9733
+    Session-ID-ctx: 
+    Resumption PSK: F8037CA5EA5199ED24EC9838C89958B500DD31F2F2EE69F2D90CA963C0239B471F83E43E889E33A4B2A225A29671D9BE
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 53 c1 ec 75 4f 10 00 c5-43 8e 05 43 b2 7e 31 25   S..uO...C..C.~1%
+    0010 - ae 8f 77 f2 de 7f 4a 64-83 6f 1c 20 e7 f5 1f 57   ..w...Jd.o. ...W
+    0020 - 10 06 81 63 82 5a 02 52-df 7d 29 0a 5a 4a bf 83   ...c.Z.R.}).ZJ..
+    0030 - 20 b6 71 1e d3 e9 69 9f-2d c8 56 f5 78 57 4b c8    .q...i.-.V.xWK.
+    0040 - e6 2f da 55 e5 aa f8 13-cc e0 2f 1c 5d c5 3e c9   ./.U....../.].>.
+    0050 - 15 d7 73 17 7b 95 af 21-82 de a2 83 e5 1f 42 8e   ..s.{..!......B.
+    0060 - 8b 01 ee 37 ee fa 0e ac-ab b3 38 ec fa 59 98 d5   ...7......8..Y..
+    0070 - 1c e1 ba 26 62 77 36 eb-d9 41 b0 4d 77 27 f8 1e   ...&bw6..A.Mw'..
+    0080 - bf fa 78 38 37 83 ea 14-9f 8c 47 2d f4 5b f9 1b   ..x87.....G-.[..
+    0090 - 63 4b f0 b1 b1 fe c5 6b-75 41 c7 6d 32 31 e9 40   cK.....kuA.m21.@
+    00a0 - 48 ac 41 7e 59 5b 3c 96-6a 89 02 39 ad 5f 97 f0   H.A~Y[<.j..9._..
+    00b0 - e3 ed 57 42 3b 8d 38 07-91 a7 21 1a 42 23 68 91   ..WB;.8...!.B#h.
+    00c0 - 7e 16 af 0e d0 85 31 94-2f 09 c0 65 7a aa c7 ef   ~.....1./..ez...
+
+    Start Time: 1769597473
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 4C8DCA6E2628098219089FCCEE450C786A0A0996AA5324142A517A2C2FE21408
+    Session-ID-ctx: 
+    Resumption PSK: 998DBB77B930851423EABA75FCB82AF5B56E2C7545CB4569A11E1D667246F0828E48471FDAC026DF1AFEAE4533D5722A
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 53 c1 ec 75 4f 10 00 c5-43 8e 05 43 b2 7e 31 25   S..uO...C..C.~1%
+    0010 - 48 01 8c df 04 07 14 3f-10 73 b9 66 57 a9 f7 93   H......?.s.fW...
+    0020 - dd d1 55 21 33 fa 6f 48-8e cf de c2 35 6e 6f 5b   ..U!3.oH....5no[
+    0030 - 00 62 f8 61 e3 b1 55 f4-e3 c2 f3 9d 4e aa 0e 24   .b.a..U.....N..$
+    0040 - 48 cd a1 e9 df 16 b5 e3-aa db ac aa 60 24 91 4a   H...........`$.J
+    0050 - 34 8e 72 a2 b2 16 ec d2-02 3a 3e f5 b9 78 c3 bd   4.r......:>..x..
+    0060 - ec 43 fa 71 8c fd 23 4f-a5 7f 21 64 c3 3b 16 d0   .C.q..#O..!d.;..
+    0070 - 79 c3 66 ec 64 71 7c a7-d1 c0 00 95 5b 63 e7 17   y.f.dq|.....[c..
+    0080 - a1 93 66 c8 52 5f fb 64-68 b0 9d 12 00 88 f4 ad   ..f.R_.dh.......
+    0090 - 78 a9 3a 74 6e 0f 73 01-b2 36 46 b3 d7 d9 e4 88   x.:tn.s..6F.....
+    00a0 - f4 b1 b4 76 22 60 9e 5c-43 51 b9 d8 07 90 9a 8b   ...v"`.\CQ......
+    00b0 - 42 3d 95 f3 74 da c2 4c-ad 0c 65 40 59 7a d4 72   B=..t..L..e@Yz.r
+    00c0 - ce 56 95 83 1a 39 7f 46-02 02 b9 eb 26 a4 c7 8c   .V...9.F....&...
+
+    Start Time: 1769597473
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+* OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN] Dovecot ready.
+* BYE Disconnected for inactivity.
+closed
