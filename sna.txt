@@ -1,6 +1,7 @@
 
 
 
+openssl s_client -connect bnaserver.bungkus.org:993 -showcerts </dev/null 2>/dev/null | openssl x509 -outform PEM > ~/Downloads/rocky-mail.crt
 
 
 
