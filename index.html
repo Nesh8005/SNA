@@ -1,0 +1,1094 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Mail Server Lab Documentation - Every Step, Every Problem, Every Solution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #5a67d8;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-left: 6px solid #667eea;
+            padding-left: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #4a5568;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #718096;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 12px 0;
+            font-size: 1.05em;
+        }
+
+        pre {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-size: 0.95em;
+            border-left: 4px solid #667eea;
+        }
+
+        code {
+            background: #edf2f7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #c53030;
+            font-size: 0.95em;
+        }
+
+        pre code {
+            background: transparent;
+            color: #e2e8f0;
+        }
+
+        .screenshot {
+            max-width: 100%;
+            border: 3px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .problem {
+            background: #fff5f5;
+            border-left: 5px solid #fc8181;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .problem h4 {
+            color: #c53030;
+            margin-top: 0;
+        }
+
+        .solution {
+            background: #f0fff4;
+            border-left: 5px solid #48bb78;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .solution h4 {
+            color: #22543d;
+            margin-top: 0;
+        }
+
+        .warning {
+            background: #fffaf0;
+            border-left: 5px solid #ed8936;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .info {
+            background: #ebf8ff;
+            border-left: 5px solid #4299e1;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            border: 3px solid #48bb78;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .success h3 {
+            color: #22543d;
+            margin-top: 0;
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 35px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        .timeline-item {
+            border-left: 3px solid #667eea;
+            padding-left: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -9px;
+            top: 0;
+            color: #667eea;
+            font-size: 1.5em;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 30px;
+            }
+
+            .screenshot:hover {
+                transform: none;
+            }
+        }
+
+        @page {
+            margin: 2cm;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1> COMPLETE MAIL SERVER LAB DOCUMENTATION</h1>
+        <p style="text-align: center; font-size: 1.2em; color: #718096; margin-bottom: 30px;">
+            <strong>Postfix & Dovecot on Rocky Linux with Thunderbird Client on Ubuntu</strong><br>
+            <em>Every Step Every Problem Every Screenshot Every Solution</em>
+        </p>
+
+        <div class="success">
+            <h3> Lab Completion Summary</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td><strong>Lab Date</strong></td>
+                    <td>January 28-29, 2026</td>
+                </tr>
+                <tr>
+                    <td><strong>Duration</strong></td>
+                    <td>~4 hours (including intensive troubleshooting)</td>
+                </tr>
+                <tr>
+                    <td><strong>Server OS</strong></td>
+                    <td>Rocky Linux 9 (192.168.200.3)</td>
+                </tr>
+                <tr>
+                    <td><strong>Client OS</strong></td>
+                    <td>Ubuntu (192.168.200.80)</td>
+                </tr>
+                <tr>
+                    <td><strong>Domain</strong></td>
+                    <td>bungkus.org</td>
+                </tr>
+                <tr>
+                    <td><strong>Hostname</strong></td>
+                    <td>bnaserver.bungkus.org</td>
+                </tr>
+                <tr>
+                    <td><strong>User Account</strong></td>
+                    <td>nesh / password: 2805</td>
+                </tr>
+                <tr>
+                    <td><strong>Final Status</strong></td>
+                    <td> FULLY OPERATIONAL - Email successfully sent and received</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2> Table of Contents</h2>
+        <ol style="font-size: 1.1em; line-height: 2;">
+            <li><a href="#phase1">Phase 1: Initial Server Configuration</a></li>
+            <li><a href="#phase2">Phase 2: SSL/TLS Certificate Setup</a></li>
+            <li><a href="#phase3">Phase 3: Network Connectivity Crisis</a></li>
+            <li><a href="#phase4">Phase 4: Service Configuration & Testing</a></li>
+            <li><a href="#phase5">Phase 5: Ubuntu Client Setup</a></li>
+            <li><a href="#phase6">Phase 6: First Connection Attempts</a></li>
+            <li><a href="#phase7">Phase 7: Local Server Verification</a></li>
+            <li><a href="#phase8">Phase 8: Fresh Ubuntu Clone Setup</a></li>
+            <li><a href="#phase9">Phase 9: Certificate Hell - The OCSP Nightmare</a></li>
+            <li><a href="#phase10">Phase 10: Final Victory</a></li>
+            <li><a href="#lessons">Key Lessons & Best Practices</a></li>
+            <li><a href="#reference">Complete Command Reference</a></li>
+        </ol>
+
+        <h2 id="phase1">Phase 1: Initial Server Configuration (Rocky Linux)</h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 1</span>Setting the Hostname</h3>
+            <p>First critical step was setting the FQDN for proper mail server identification:</p>
+            <pre><code>sudo hostnamectl set-hostname bnaserver.bungkus.org
+hostnamectl  # Verify
+hostname -f  # Verify FQDN</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 2</span>Hosts File Configuration</h3>
+            <pre><code>echo "192.168.200.3 bnaserver.bungkus.org bnaserver" | sudo tee -a /etc/hosts
+cat /etc/hosts  # Verify entry</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 3</span>Installing Mail Services</h3>
+            <pre><code>sudo dnf update -y
+sudo dnf install postfix dovecot -y</code></pre>
+        </div>
+
+        <h2 id="phase2">Phase 2: SSL/TLS Certificate Generation</h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 4</span>Generating Self-Signed Certificate</h3>
+            <p>Created a 365-day self-signed certificate for secure email communication:</p>
+            <pre><code>sudo openssl req -new -x509 -days 365 -nodes \
+  -out /etc/pki/tls/certs/bnaserver.pem \
+  -keyout /etc/pki/tls/private/bnaserver.key \
+  -subj "/C=MY/ST=KL/L=APU/O=SNA/CN=bnaserver.bungkus.org"
+
+# Set proper permissions
+sudo chmod 600 /etc/pki/tls/private/bnaserver.key
+sudo chmod 644 /etc/pki/tls/certs/bnaserver.pem</code></pre>
+
+            <div class="info">
+                <strong> Note:</strong> The Common Name (CN) MUST match the server hostname exactly. This is critical
+                for SSL/TLS verification.
+            </div>
+        </div>
+
+        <h2 id="phase3">Phase 3: Network Connectivity Crisis </h2>
+
+        <div class="problem">
+            <h4> PROBLEM: Internet Connectivity Lost After Hostname Change</h4>
+            <p>Immediately after setting the hostname with <code>hostnamectl</code>, the Rocky server lost all internet
+                connectivity. This was completely unexpected!</p>
+
+            <h4>Diagnosis Steps:</h4>
+            <pre><code>ping -c 3 8.8.8.8    # FAILED - no response
+ip addr show enp0s3  # IP address still present: 192.168.200.3
+ip route             # NO DEFAULT GATEWAY! </code></pre>
+
+            <img src="images/uploaded_media_1769599330758.png"
+                alt="Network Connectivity Lost" class="screenshot">
+            <p><strong>Root Cause:</strong> The <code>hostnamectl</code> command somehow removed the default gateway
+                from the routing table.</p>
+        </div>
+
+        <div class="solution">
+            <h4> SOLUTION: Manually Restore Network Configuration</h4>
+            <pre><code># Restore default gateway (tried .1 first, then .2 worked)
+sudo ip route add default via 192.168.200.2 dev enp0s3
+
+# Add DNS server
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+
+# Verify connectivity
+ping -c 3 8.8.8.8        # Still fails (ICMP blocked)
+curl -I https://github.com  # SUCCESS! HTTPS works!</code></pre>
+
+            <div class="warning">
+                <strong> IMPORTANT DISCOVERY:</strong> In VirtualBox NAT Networks, ICMP (ping) may be blocked by the
+                host firewall even when TCP/HTTPS traffic flows perfectly. We confirmed internet access by attempting
+                HTTPS connections to GitHub, which succeeded despite ping failures.
+            </div>
+        </div>
+
+        <h2 id="phase4">Phase 4: Postfix & Dovecot Configuration</h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 5</span>Postfix Main Configuration</h3>
+            <p>Edited <code>/etc/postfix/main.cf</code> with critical settings:</p>
+            <pre><code># Basic settings
+myhostname = bnaserver.bungkus.org
+mydomain = bungkus.org
+myorigin = $mydomain
+inet_interfaces = all
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+
+# TLS/SSL Configuration
+smtpd_tls_cert_file = /etc/pki/tls/certs/bnaserver.pem
+smtpd_tls_key_file = /etc/pki/tls/private/bnaserver.key
+smtpd_tls_security_level = may
+smtpd_tls_auth_only = yes
+
+# SASL Authentication
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 6</span>Enable Secure SMTP Ports (465 & 587)</h3>
+            <p>Edited <code>/etc/postfix/master.cf</code> to uncomment and configure secure submission ports:</p>
+            <pre><code># Port 587 - Submission with STARTTLS
+submission inet n       -       n       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+
+# Port 465 - SMTPS (TLS Wrapper Mode)
+smtps     inet  n       -       n       -       -       smtpd
+  -o syslog_name=postfix/smtps
+  -o smtpd_tls_wrappermode=yes
+  -o smtpd_sasl_auth_enable=yes</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 7</span>Dovecot SSL Configuration</h3>
+            <p>Configured <code>/etc/dovecot/conf.d/10-ssl.conf</code>:</p>
+            <pre><code>ssl = required
+ssl_cert = &lt;/etc/pki/tls/certs/bnaserver.pem
+ssl_key = &lt;/etc/pki/tls/private/bnaserver.key
+ssl_min_protocol = TLSv1.2</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 8</span>Firewall Configuration</h3>
+            <pre><code>sudo firewall-cmd --permanent --add-service=smtp
+sudo firewall-cmd --permanent --add-service=smtps
+sudo firewall-cmd --permanent --add-service=submission
+sudo firewall-cmd --permanent --add-service=imap
+sudo firewall-cmd --permanent --add-service=imaps
+sudo firewall-cmd --reload
+
+# Verify
+sudo firewall-cmd --list-services</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 9</span>Start and Enable Services</h3>
+            <pre><code>sudo systemctl start postfix
+sudo systemctl enable postfix
+sudo systemctl start dovecot
+sudo systemctl enable dovecot
+
+# Verify status
+sudo systemctl status postfix dovecot</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 10</span>Verify Listening Ports</h3>
+            <pre><code>ss -tuln | grep -E '25|465|587|143|993'</code></pre>
+            <p><strong>Expected Output:</strong> Ports 25, 465, 587 (SMTP family) and 143, 993 (IMAP family) should all
+                be in LISTEN state</p>
+            <img src="images/uploaded_media_1769645772107.png"
+                alt="Listening Ports Verified" class="screenshot">
+        </div>
+
+        <h2 id="phase5">Phase 5: Ubuntu Client Setup & Thunderbird Installation</h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 11</span>Ubuntu Hosts File Configuration</h3>
+            <pre><code>echo "192.168.200.3 bnaserver.bungkus.org" | sudo tee -a /etc/hosts
+
+# Verify name resolution
+ping -c 3 bnaserver.bungkus.org</code></pre>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 12</span>Downloading Thunderbird</h3>
+            <p>Decided to use manual installation method instead of package manager for version control:</p>
+            <img src="images/uploaded_media_1769601458342.png"
+                alt="Thunderbird Download Page" class="screenshot">
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 13</span>Manual Thunderbird Installation</h3>
+            <pre><code>cd ~/Downloads
+tar -xvf thunderbird-147.0.tar.xz
+sudo mv thunderbird /opt/
+sudo ln -sf /opt/thunderbird/thunderbird /usr/bin/thunderbird
+
+# Launch
+thunderbird &</code></pre>
+            <img src="images/uploaded_media_1769601589352.png"
+                alt="Thunderbird Extraction Process" class="screenshot">
+        </div>
+
+        <div class="problem">
+            <h4> PROBLEM: Symlink Path Error</h4>
+            <p>Initial attempt had a typo in the symlink path:</p>
+            <img src="images/uploaded_media_1769601713955.png"
+                alt="Path Error" class="screenshot">
+        </div>
+
+        <div class="solution">
+            <h4> FIX: Corrected Symlink Command</h4>
+            <pre><code>sudo ln -sf /opt/thunderbird/thunderbird /usr/bin/thunderbird</code></pre>
+            <p>Used <code>-sf</code> flags to force overwrite and create symbolic link.</p>
+        </div>
+
+        <h2 id="phase6">Phase 6: First Connection Attempts From Original Ubuntu</h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 14</span>Initial Thunderbird Account Setup</h3>
+            <p>Configured account with these settings:</p>
+            <ul>
+                <li><strong>Email:</strong> nesh@bungkus.org</li>
+                <li><strong>Incoming:</strong> bnaserver.bungkus.org, Port 993, SSL/TLS</li>
+                <li><strong>Outgoing:</strong> bnaserver.bungkus.org, Port 465, SSL/TLS</li>
+                <li><strong>Username:</strong> nesh@bungkus.org (this was wrong!)</li>
+            </ul>
+            <img src="images/uploaded_media_1769648251996.png"
+                alt="Initial Account Configuration" class="screenshot">
+        </div>
+
+        <div class="problem">
+            <h4> PROBLEM: "Failed to Find Settings" Error</h4>
+            <p>Thunderbird couldn't auto-detect the server settings and displayed a warning banner.</p>
+        </div>
+
+        <h2 id="phase7">Phase 7: Local Server Verification (The Smart Move)</h2>
+
+        <div class="info">
+            <h4> STRATEGY SHIFT</h4>
+            <p>Before continuing to fight with the client, we decided to verify the server was working correctly by
+                testing LOCALLY on the Rocky server itself using OpenSSL.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 15</span>Local SMTP Test with OpenSSL</h3>
+            <p>Connected to SMTP port 25 with STARTTLS and sent a test email:</p>
+            <pre><code>openssl s_client -starttls smtp -quiet -connect localhost:25
+
+# Commands entered:
+HELO localhost
+MAIL FROM: &lt;nesh@bungkus.org&gt;
+RCPT TO: &lt;nesh@bungkus.org&gt;
+DATA
+Subject: Lab 10 Final Test
+
+This test proves the secure server is working.
+.
+QUIT</code></pre>
+
+            <div class="success">
+                <h4> SUCCESS!</h4>
+                <p><strong>Server Response:</strong> <code>250 2.0.0 Ok: queued as 361BF117B5F6</code></p>
+                <p>Email was successfully queued! This proved Postfix was working perfectly.</p>
+            </div>
+
+            <img src="images/uploaded_media_1769646934397.png"
+                alt="SMTP Local Test Success" class="screenshot">
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 16</span>Local IMAP Test with OpenSSL</h3>
+            <p>Connected to IMAP port 993 and retrieved the test email:</p>
+            <pre><code>openssl s_client -quiet -connect localhost:993
+
+# Commands entered:
+A1 LOGIN nesh 2805
+A2 SELECT INBOX
+A3 FETCH 1 BODY[]
+A4 LOGOUT</code></pre>
+
+            <div class="success">
+                <h4> SUCCESS!</h4>
+                <p>Successfully logged in, selected inbox, and retrieved the "Lab 10 Final Test" email that was sent via
+                    SMTP!</p>
+                <p>This proved both Postfix AND Dovecot were working perfectly on the server side.</p>
+            </div>
+
+            <img src="images/uploaded_media_1769647366948.png"
+                alt="IMAP Local Test Success" class="screenshot">
+        </div>
+
+        <h2 id="phase8">Phase 8: Fresh Ubuntu Clone - Starting Over</h2>
+
+        <div class="info">
+            <p>User decided to use a fresh Ubuntu clone to avoid any configuration conflicts from previous attempts.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 17</span>Setting Up Fresh Clone</h3>
+            <pre><code># Add server to hosts file
+echo "192.168.200.3 bnaserver.bungkus.org" | sudo tee -a /etc/hosts
+
+# Verify connectivity
+ping -c 3 bnaserver.bungkus.org
+
+# Extract and install Thunderbird again
+cd ~/Downloads
+tar -xvf thunderbird-147.0.tar.xz
+sudo mv thunderbird /opt/
+sudo ln -sf /opt/thunderbird/thunderbird /usr/bin/thunderbird</code></pre>
+        </div>
+
+        <h2 id="phase9">Phase 9: Certificate Hell - The OCSP Nightmare </h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 18</span>First Attempt on Fresh Clone</h3>
+            <p>Configured account again with proper settings:</p>
+            <ul>
+                <li>Email: nesh@bungkus.org</li>
+                <li>Incoming: bnaserver.bungkus.org:993, SSL/TLS</li>
+                <li>Outgoing: bnaserver.bungkus.org:465, SSL/TLS</li>
+                <li>Username: <strong>nesh</strong> (corrected - just the username, not email)</li>
+            </ul>
+        </div>
+
+        <div class="problem">
+            <h4> PROBLEM #1: "No Information Available" Certificate Hang</h4>
+            <p>When trying to add a security exception, Thunderbird displayed "Unable to obtain identification status
+                for this site" and hung indefinitely.</p>
+            <img src="images/uploaded_media_1769646479702.png"
+                alt="No Information Available" class="screenshot">
+            <img src="images/uploaded_media_1769648967575.png"
+                alt="Certificate Status Check Hang" class="screenshot">
+            <img src="images/uploaded_media_1769649140334.png"
+                alt="Extended Hang" class="screenshot">
+
+            <p><strong>Root Cause:</strong> Thunderbird was attempting to validate the self-signed certificate using
+                OCSP (Online Certificate Status Protocol), which requires internet access to a certificate authority.
+                Since our certificate is self-signed, no such authority exists, causing an infinite wait.</p>
+        </div>
+
+        <div class="problem">
+            <h4> PROBLEM #2: "Checking Password" Infinite Loop</h4>
+            <p>Even after attempting to bypass the certificate screen, Thunderbird got stuck on "Checking password..."
+            </p>
+            <img src="images/uploaded_media_1769649830233.png"
+                alt="Checking Password Hang" class="screenshot">
+        </div>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 19</span>Network Connectivity Verification</h3>
+            <p>To rule out network issues, we ran OpenSSL test from the Ubuntu clone:</p>
+            <pre><code>openssl s_client -connect bnaserver.bungkus.org:993</code></pre>
+            <img src="images/uploaded_media_1769650091902.png"
+                alt="OpenSSL Connection Successful" class="screenshot">
+
+            <div class="success">
+                <h4> NETWORK IS FINE!</h4>
+                <p>Output showed:</p>
+                <ul>
+                    <li><code>CONNECTED(00000003)</code> TCP connection successful</li>
+                    <li>Complete TLS handshake with certificate details</li>
+                    <li><code>* OK [CAPABILITY IMAP4rev1...] Dovecot ready.</code> IMAP server responding</li>
+                </ul>
+                <p><strong>Conclusion:</strong> The problem was NOT network connectivity. It was purely Thunderbird's
+                    certificate validation process hanging.</p>
+            </div>
+        </div>
+
+        <h3>Attempted Solutions (The Trial & Error Phase)</h3>
+
+        <div class="timeline-item">
+            <h4>Attempt 1: Manual Certificate Import via "Add Exception"</h4>
+            <p>Tried to manually add security exception through Certificate Manager:</p>
+            <img src="images/uploaded_media_1769650222130.png"
+                alt="Certificate Manager" class="screenshot">
+
+            <p>Attempted to use the "Add Exception" dialog with location <code>https://bnaserver.bungkus.org:993</code>:
+            </p>
+            <img src="images/uploaded_media_1769650663113.png"
+                alt="Add Exception Dialog Hang" class="screenshot">
+
+            <div class="warning">
+                <strong> FAILED:</strong> Same "No Information Available" hang occurred. The issue: using
+                <code>https://</code> protocol for a mail server and OCSP validation timeout.
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <h4>Attempt 2: Extract Certificate and Import as Authority</h4>
+            <p>Extracted the server certificate to a file:</p>
+            <pre><code>openssl s_client -connect bnaserver.bungkus.org:993 -showcerts &lt;/dev/null 2&gt;/dev/null | \
+  openssl x509 -outform PEM &gt; ~/Downloads/rocky-mail.crt</code></pre>
+            <p>Then tried to import it through Thunderbird's Certificate Manager Authorities tab Import.</p>
+            <p><strong>Result:</strong> Helped, but didn't completely solve the hanging issue.</p>
+        </div>
+
+        <div class="solution">
+            <h4> WINNING COMBINATION: Multiple Fixes Applied</h4>
+            <ol>
+                <li><strong>Disable OCSP in Thunderbird:</strong>
+                    <ul>
+                        <li>Settings Search for "OCSP"</li>
+                        <li>Uncheck "Query OCSP responder servers..."</li>
+                    </ul>
+                </li>
+                <li><strong>Use IP Address Instead of Hostname:</strong>
+                    <ul>
+                        <li>Changed both Incoming and Outgoing servers to <code>192.168.200.3</code></li>
+                        <li>This bypassed any DNS/name resolution issues</li>
+                    </ul>
+                </li>
+                <li><strong>Correct Username Format:</strong>
+                    <ul>
+                        <li>Used <code>nesh</code> instead of <code>nesh@bungkus.org</code></li>
+                        <li>Mail servers authenticate with system username, not email</li>
+                    </ul>
+                </li>
+                <li><strong>Manual Configuration:</strong>
+                    <ul>
+                        <li>Explicitly set ports: 993 (IMAP), 465 (SMTP)</li>
+                        <li>Explicitly set security: SSL/TLS (not autodetect)</li>
+                        <li>Authentication: Normal password</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h2 id="phase10">Phase 10: Final Victory! </h2>
+
+        <div class="timeline-item">
+            <h3><span class="step-number">Step 20</span>The Security Exception That Finally Worked</h3>
+            <p>After applying all the fixes, Thunderbird finally presented a proper certificate warning notification:
+            </p>
+            <img src="images/uploaded_media_1769651180610.png"
+                alt="Certificate Warning - Working" class="screenshot">
+            <img src="images/uploaded_media_1769651390382.png"
+                alt="Certificate Notification" class="screenshot">
+            <p>Clicked "Confirm Security Exception" and checked "Permanently store this exception"</p>
+        </div>
+
+        <div class="success">
+            <h3> THE MOMENT OF GLORY</h3>
+            <img src="images/uploaded_media_1769651458043.png"
+                alt="SUCCESS - Email Inbox" class="screenshot">
+
+            <h4> COMPLETE SUCCESS!</h4>
+            <p><strong>What we see in this screenshot:</strong></p>
+            <ul>
+                <li> Thunderbird successfully connected to the mail server</li>
+                <li> Account <code>nesh@bungkus.org</code> is active and synchronized</li>
+                <li> Inbox shows "1 Message"</li>
+                <li> The test email "Lab 10 Final Test" is visible and readable</li>
+                <li> Email body displays: "This test proves the secure server is working."</li>
+                <li> Sent from nesh@bungkus.org to nesh@bungkus.org</li>
+                <li> Timestamp shows 08:37 (time email was sent locally on server)</li>
+            </ul>
+
+            <div
+                style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); padding: 25px; border-radius: 10px; margin-top: 20px; text-align: center; border: 3px solid #d63031;">
+                <h2 style="color: #d63031; margin: 0;"> LAB OBJECTIVE: ACHIEVED</h2>
+                <h3 style="color: #2d3436; margin: 10px 0;">Secure Mail Server is FULLY OPERATIONAL</h3>
+                <p style="font-size: 1.2em; margin: 0;"> Postfix configured Dovecot configured SSL/TLS enabled Client
+                    connected Email sent and received</p>
+            </div>
+        </div>
+
+        <h2 id="lessons"> Key Lessons & Best Practices</h2>
+
+        <div class="info">
+            <h3>1. Hostname Management</h3>
+            <ul>
+                <li> <strong>Warning:</strong> <code>hostnamectl</code> can reset network configuration including
+                    default gateway</li>
+                <li> Always verify <code>ip route</code> after hostname changes</li>
+                <li> Set hostname BEFORE generating SSL certificates so CN matches</li>
+                <li> Use FQDN (bnaserver.bungkus.org) not just short name (bnaserver)</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>2. Network Troubleshooting</h3>
+            <ul>
+                <li> ICMP ping failures don't always mean "no internet"</li>
+                <li> Test with application-level protocols (curl, wget, openssl)</li>
+                <li> In VirtualBox NAT, ping may be blocked while HTTPS works</li>
+                <li> Always verify gateway, DNS, and routing table</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>3. SSL/TLS Certificates in Lab Environment</h3>
+            <ul>
+                <li><strong>Self-signed certificates are perfectly fine for testing</strong></li>
+                <li> OCSP validation will ALWAYS fail for self-signed certs disable it</li>
+                <li> Import self-signed certs as "Authorities" for permanent trust</li>
+                <li> Certificate CN must match server hostname exactly</li>
+                <li> Use <code>openssl s_client</code> to verify SSL before using GUI clients</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>4. Email Client Configuration</h3>
+            <ul>
+                <li><strong>Username format matters!</strong> Use system username (nesh) not email (nesh@bungkus.org)
+                </li>
+                <li> Explicitly specify ports: 993 for IMAPS, 465 for SMTPS</li>
+                <li> Explicitly set security: SSL/TLS (don't rely on autodetect)</li>
+                <li> Use IP addresses to bypass name resolution issues during troubleshooting</li>
+                <li> Disable OCSP for lab environments with self-signed certificates</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>5. Systematic Verification Strategy</h3>
+            <ol>
+                <li><strong>Test locally first</strong> - verify server works before adding client complexity</li>
+                <li><strong>Layer by layer</strong> - network ports encryption authentication</li>
+                <li><strong>Use CLI tools</strong> - openssl, telnet, nc before GUI clients</li>
+                <li><strong>Read actual protocol responses</strong> - error codes tell you exactly what's wrong</li>
+                <li><strong>Document with screenshots</strong> - invaluable for troubleshooting and learning</li>
+            </ol>
+        </div>
+
+        <h2 id="reference"> Complete Command Reference</h2>
+
+        <h3>Server Setup (Rocky Linux)</h3>
+        <pre><code># Hostname and hosts
+sudo hostnamectl set-hostname bnaserver.bungkus.org
+echo "192.168.200.3 bnaserver.bungkus.org bnaserver" | sudo tee -a /etc/hosts
+
+# Install packages
+sudo dnf install postfix dovecot -y
+
+# Generate SSL certificate
+sudo openssl req -new -x509 -days 365 -nodes \
+  -out /etc/pki/tls/certs/bnaserver.pem \
+  -keyout /etc/pki/tls/private/bnaserver.key \
+  -subj "/C=MY/ST=KL/L=APU/O=SNA/CN=bnaserver.bungkus.org"
+sudo chmod 600 /etc/pki/tls/private/bnaserver.key
+sudo chmod 644 /etc/pki/tls/certs/bnaserver.pem
+
+# Firewall
+sudo firewall-cmd --permanent --add-service={smtp,smtps,submission,imap,imaps}
+sudo firewall-cmd --reload
+
+# Start services
+sudo systemctl start postfix dovecot
+sudo systemctl enable postfix dovecot
+
+# Network troubleshooting (if needed)
+sudo ip route add default via 192.168.200.2 dev enp0s3
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf</code></pre>
+
+        <h3>Client Setup (Ubuntu)</h3>
+        <pre><code># Hosts file
+echo "192.168.200.3 bnaserver.bungkus.org" | sudo tee -a /etc/hosts
+
+# Thunderbird manual installation
+cd ~/Downloads
+tar -xvf thunderbird-147.0.tar.xz
+sudo mv thunderbird /opt/
+sudo ln -sf /opt/thunderbird/thunderbird /usr/bin/thunderbird
+
+# Certificate extraction (if needed)
+openssl s_client -connect bnaserver.bungkus.org:993 -showcerts &lt;/dev/null 2&gt;/dev/null | \
+  openssl x509 -outform PEM &gt; ~/Downloads/rocky-mail.crt</code></pre>
+
+        <h3>Verification & Testing</h3>
+        <pre><code># Check listening ports
+ss -tuln | grep -E '25|465|587|143|993'
+
+# Test SMTP (local)
+openssl s_client -starttls smtp -quiet -connect localhost:25
+# Then: HELO, MAIL FROM, RCPT TO, DATA, ., QUIT
+
+# Test IMAP (local)
+openssl s_client -quiet -connect localhost:993
+# Then: A1 LOGIN user pass, A2 SELECT INBOX, A3 FETCH 1 BODY[], A4 LOGOUT
+
+# Test from remote client
+openssl s_client -connect bnaserver.bungkus.org:993
+openssl s_client -connect 192.168.200.3:993</code></pre>
+
+        <h3>Thunderbird Account Configuration</h3>
+        <table>
+            <tr>
+                <th>Setting</th>
+                <th>Value</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td>nesh@bungkus.org</td>
+                <td>Display email</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>2805</td>
+                <td>System user password</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><strong>nesh</strong></td>
+                <td>System username ONLY (not email!)</td>
+            </tr>
+            <tr>
+                <td>Incoming Server</td>
+                <td>192.168.200.3 or bnaserver.bungkus.org</td>
+                <td>IP more reliable in testing</td>
+            </tr>
+            <tr>
+                <td>Incoming Port</td>
+                <td>993</td>
+                <td>IMAPS</td>
+            </tr>
+            <tr>
+                <td>Incoming Security</td>
+                <td>SSL/TLS</td>
+                <td>Not STARTTLS, not autodetect</td>
+            </tr>
+            <tr>
+                <td>Outgoing Server</td>
+                <td>192.168.200.3 or bnaserver.bungkus.org</td>
+                <td>Same as incoming</td>
+            </tr>
+            <tr>
+                <td>Outgoing Port</td>
+                <td>465</td>
+                <td>SMTPS (or 587 for submission)</td>
+            </tr>
+            <tr>
+                <td>Outgoing Security</td>
+                <td>SSL/TLS</td>
+                <td>Encrypt from the start</td>
+            </tr>
+            <tr>
+                <td>Authentication</td>
+                <td>Normal Password</td>
+                <td>Clear username/password</td>
+            </tr>
+            <tr>
+                <td>OCSP Setting</td>
+                <td><strong>DISABLED</strong></td>
+                <td>Critical for self-signed certs!</td>
+            </tr>
+        </table>
+
+        <h2> Final Configuration Summary</h2>
+
+        <table>
+            <tr>
+                <th colspan="2" style="text-align: center; font-size: 1.2em;">Rocky Linux Mail Server</th>
+            </tr>
+            <tr>
+                <td><strong>Hostname</strong></td>
+                <td>bnaserver.bungkus.org</td>
+            </tr>
+            <tr>
+                <td><strong>IP Address</strong></td>
+                <td>192.168.200.3</td>
+            </tr>
+            <tr>
+                <td><strong>Operating System</strong></td>
+                <td>Rocky Linux 9</td>
+            </tr>
+            <tr>
+                <td><strong>SMTP Service</strong></td>
+                <td>Postfix 3.x</td>
+            </tr>
+            <tr>
+                <td><strong>IMAP Service</strong></td>
+                <td>Dovecot 2.3.16</td>
+            </tr>
+            <tr>
+                <td><strong>Ports Open</strong></td>
+                <td>25, 465, 587 (SMTP/S), 143, 993 (IMAP/S)</td>
+            </tr>
+            <tr>
+                <td><strong>SSL/TLS</strong></td>
+                <td>Self-signed certificate (365 days)</td>
+            </tr>
+            <tr>
+                <td><strong>User Account</strong></td>
+                <td>nesh / 2805</td>
+            </tr>
+            <tr>
+                <td><strong>Status</strong></td>
+                <td style="color: #22543d; font-weight: bold;"> OPERATIONAL</td>
+            </tr>
+        </table>
+
+        <table style="margin-top: 30px;">
+            <tr>
+                <th colspan="2" style="text-align: center; font-size: 1.2em;">Ubuntu Mail Client</th>
+            </tr>
+            <tr>
+                <td><strong>IP Address</strong></td>
+                <td>192.168.200.80</td>
+            </tr>
+            <tr>
+                <td><strong>Operating System</strong></td>
+                <td>Ubuntu (Fresh Clone)</td>
+            </tr>
+            <tr>
+                <td><strong>Mail Client</strong></td>
+                <td>Mozilla Thunderbird 147.0</td>
+            </tr>
+            <tr>
+                <td><strong>Installation Method</strong></td>
+                <td>Manual extraction to /opt/thunderbird</td>
+            </tr>
+            <tr>
+                <td><strong>Account Email</strong></td>
+                <td>nesh@bungkus.org</td>
+            </tr>
+            <tr>
+                <td><strong>Incoming Protocol</strong></td>
+                <td>IMAP (Port 993, SSL/TLS)</td>
+            </tr>
+            <tr>
+                <td><strong>Outgoing Protocol</strong></td>
+                <td>SMTP (Port 465, SSL/TLS)</td>
+            </tr>
+            <tr>
+                <td><strong>Certificate Status</strong></td>
+                <td>Trusted (exception added)</td>
+            </tr>
+            <tr>
+                <td><strong>Status</strong></td>
+                <td style="color: #22543d; font-weight: bold;"> CONNECTED</td>
+            </tr>
+        </table>
+
+        <div class="success" style="margin-top: 40px;">
+            <h2 style="text-align: center; color: #22543d; margin-bottom: 20px;"> Lab Completion Statistics</h2>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Total Duration</td>
+                    <td>~4 hours</td>
+                </tr>
+                <tr>
+                    <td>Major Problems Encountered</td>
+                    <td>5 (network loss, OCSP hang, certificate issues, username format, connectivity)</td>
+                </tr>
+                <tr>
+                    <td>Screenshots Documented</td>
+                    <td>67+</td>
+                </tr>
+                <tr>
+                    <td>Configuration Files Modified</td>
+                    <td>5 (main.cf, master.cf, 10-ssl.conf, hosts x2)</td>
+                </tr>
+                <tr>
+                    <td>Services Configured</td>
+                    <td>4 (Postfix, Dovecot, firewalld, Thunderbird)</td>
+                </tr>
+                <tr>
+                    <td>Verification Methods Used</td>
+                    <td>3 (telnet/openssl, local SMTP/IMAP, GUI client)</td>
+                </tr>
+                <tr>
+                    <td>Final Test Email</td>
+                    <td><strong>Successfully Sent & Received </strong></td>
+                </tr>
+                <tr>
+                    <td>Lab Objective</td>
+                    <td><strong style="color: #22543d; font-size: 1.2em;">COMPLETE </strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <hr style="margin: 50px 0; border: 2px solid #667eea;">
+
+        <div
+            style="text-align: center; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px;">
+            <h2> Lab Completion Certificate </h2>
+            <p style="font-size: 1.3em; margin: 20px 0;"><strong>Successfully Configured & Deployed</strong></p>
+            <h3 style="margin: 15px 0;">Secure Email Server Infrastructure</h3>
+            <p style="margin: 10px 0;">Using Postfix, Dovecot, SSL/TLS, and Thunderbird</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">Completed: January 28-29, 2026</p>
+            <p style="font-size: 0.9em;">Environment: VirtualBox NAT Network</p>
+            <p style="margin-top: 20px; font-size: 1.1em; font-weight: bold;">Every Step Documented Every Problem Solved
+                Every Detail Captured</p>
+        </div>
+
+    </div>
+</body>
+
+</html>
