@@ -1,3 +1,21 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+openssl s_client -connect bnaserver.bungkus.org:993 -showcerts </dev/null 2>/dev/null | openssl x509 -outform PEM > ~/Downloads/mailserver.crt
+
+
+
+
 [nesh@neshserver ~]$ sudo tail -n /var/log/maillog
 [sudo] password for nesh: 
 tail: invalid number of lines: ‘/var/log/maillog’
