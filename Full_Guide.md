@@ -160,7 +160,6 @@ sudo nano /etc/hosts
 
 <img width="2531" height="1529" alt="Screenshot 2026-02-05 091601" src="https://github.com/user-attachments/assets/f84f8b68-c2a4-4b2e-a9d3-cce78f9c3651" />
 
-
 ---
 
 **What to Add:**
@@ -331,7 +330,6 @@ sudo dnf update -y
 
 <img width="1629" height="1525" alt="image" src="https://github.com/user-attachments/assets/a104f412-28ff-4f0f-b09c-47ceedd0f479" />
 
-
 **What to document:**
 
 - Number of packages being updated
@@ -354,7 +352,6 @@ sudo dnf install postfix dovecot -y
 <img width="1178" height="78" alt="image" src="https://github.com/user-attachments/assets/90f9cce7-ce3a-4178-b3da-1954ab372e5a" />
 
 <img width="2538" height="1494" alt="image" src="https://github.com/user-attachments/assets/52e82512-7dd5-4b52-b4c9-791dc0e029bb" />
-
 
 **What to document:**
 
@@ -627,7 +624,6 @@ home_mailbox = Maildir/
 - `smtpd_sasl_security_options`: Disable anonymous authentication
 - `broken_sasl_auth_clients`: Support for older mail clients
 
-
 <img width="1918" height="502" alt="image" src="https://github.com/user-attachments/assets/401ac7fe-11ec-4ef3-81d6-ef4a18e0672d" />
 
 <img width="634" height="95" alt="image" src="https://github.com/user-attachments/assets/5818ad15-fae4-48c7-93cf-c8413947261f" />
@@ -645,10 +641,6 @@ home_mailbox = Maildir/
 <img width="1176" height="355" alt="image" src="https://github.com/user-attachments/assets/aacf0735-c688-41ff-8ac2-91c894df3a57" />
 
 <img width="779" height="155" alt="image" src="https://github.com/user-attachments/assets/ded09ec8-4802-4de9-b94f-88f8f8581bc0" />
-
-
-
-
 
 **What to document:**
 
@@ -708,7 +700,6 @@ sudo nano /etc/postfix/master.cf
 
 <img width="1644" height="159" alt="image" src="https://github.com/user-attachments/assets/41213e15-4013-4fef-804c-8ac15e5930ce" />
 
-
 ---
 
 **Find and Uncomment/Edit These Sections:**
@@ -765,6 +756,7 @@ smtps     inet  n       -       n       -       -       smtpd
 ---
 
 ## Phase 4: Dovecot Configuration
+
 ### Step 11: Configure Dovecot Mail Location
 
 **Command:**
@@ -816,7 +808,6 @@ sudo nano /etc/dovecot/conf.d/10-ssl.conf
 
 ---
 
-
 **Find and Modify:**
 
 ```
@@ -857,7 +848,6 @@ sudo nano /etc/dovecot/conf.d/10-auth.conf
 
 <img width="2559" height="1572" alt="image" src="https://github.com/user-attachments/assets/30bfec94-e90a-40af-b5a5-9f789b63797d" />
 
-
 ---
 
 **Find and verify/modify:**
@@ -875,7 +865,6 @@ auth_mechanisms = plain login
 <img width="2049" height="320" alt="image" src="https://github.com/user-attachments/assets/fd2e5587-79de-45ef-b7cb-b7bf1904f16a" />
 
 <img width="2173" height="342" alt="image" src="https://github.com/user-attachments/assets/990d5aa2-80f9-458f-add2-a70301d081aa" />
-
 
 ---
 
@@ -1272,7 +1261,6 @@ openssl s_client -connect localhost:993
 
 <img width="2527" height="247" alt="image" src="https://github.com/user-attachments/assets/5c722b3f-0b14-4c8c-849b-9886065773bc" />
 
-
 **Expected Output:**
 
 ```
@@ -1330,7 +1318,6 @@ QUIT
 
 <img width="1733" height="650" alt="image" src="https://github.com/user-attachments/assets/57b2eeb8-aec2-4ee8-8936-ea4ab1b815fa" />
 
-
 **What to document:**
 
 - Each command entered
@@ -1364,7 +1351,6 @@ sudo tail -20 /var/log/maillog
 <img width="1796" height="151" alt="image" src="https://github.com/user-attachments/assets/69a969fd-484a-4204-8e7f-13b5bff8a50d" />
 
 <img width="2537" height="940" alt="image" src="https://github.com/user-attachments/assets/45283334-2011-4259-bd2f-bf84cdac5572" />
-
 
 **What to document:**
 
@@ -1521,7 +1507,6 @@ openssl s_client -connect bnaserver.bungkus.org:993
 
 <img width="2258" height="1488" alt="image" src="https://github.com/user-attachments/assets/426c550c-c3b1-47a5-9235-6ea49dce3ed1" />
 
-
 **What to document:**
 
 - "CONNECTED" status
@@ -1653,6 +1638,18 @@ thunderbird &
 **Command:**
 
 ```bash
+sudo firewall-cmd --add-port=80/tcp
+```
+
+**Explanation:** Temporarily opens port 80 in the firewall. This is required because the firewall blocks all ports by default, and we need port 80 open for the Ubuntu client to connect and download the certificate.
+
+<img width="1800" height="200" alt="placeholder" src="https://via.placeholder.com/1800x200?text=Screenshot+showing+firewall-cmd+success" />
+
+---
+
+**Command:**
+
+```bash
 cd /etc/pki/tls/certs/
 sudo python3 -m http.server 80
 ```
@@ -1662,7 +1659,6 @@ sudo python3 -m http.server 80
 <img width="1271" height="176" alt="image" src="https://github.com/user-attachments/assets/8bbcd397-be48-4cc8-a6a7-932c287eada3" />
 
 <img width="1446" height="264" alt="image" src="https://github.com/user-attachments/assets/81bf0074-0fca-4214-8858-a0d68ae18f36" />
-
 
 ---
 
@@ -1683,6 +1679,7 @@ sudo python3 -m http.server 80
 ```bash
 thunderbird &
 ```
+
 <img width="2521" height="352" alt="image" src="https://github.com/user-attachments/assets/dbb4db64-4ff4-46c5-ab15-f91a60a99c94" />
 
 **Explanation:** Launches Thunderbird.
@@ -1706,7 +1703,6 @@ thunderbird &
 <img width="983" height="874" alt="image" src="https://github.com/user-attachments/assets/66a1d0f6-9d21-4e95-8101-c071bb5484c5" />
 
 <img width="973" height="341" alt="image" src="https://github.com/user-attachments/assets/7ba92fd4-e9b9-4f3a-a28e-9c49df315792" />
-
 
 ---
 
@@ -1734,10 +1730,6 @@ thunderbird &
 
 <img width="990" height="597" alt="image" src="https://github.com/user-attachments/assets/f1d962c2-f0f1-4fe1-b6fa-77e4fc66a3c1" />
 
-
-
-
-
 ---
 
 ### Step 36: Finalize Connection & Handle Exception
@@ -1754,8 +1746,6 @@ thunderbird &
 <img width="968" height="530" alt="image" src="https://github.com/user-attachments/assets/fb4bca3f-d1ec-4e41-9c47-f313cffe639b" />
 
 <img width="988" height="771" alt="image" src="https://github.com/user-attachments/assets/41935ac1-8c77-4b88-aca4-b2a59a3a6f05" />
-
-
 
 ---
 
@@ -1775,8 +1765,6 @@ thunderbird &
 <img width="1718" height="491" alt="image" src="https://github.com/user-attachments/assets/73ab8fce-239a-4666-8ed5-7e52c4a8ff2c" />
 
 <img width="2333" height="426" alt="image" src="https://github.com/user-attachments/assets/76fa8ee6-0c3f-4d84-aa47-6e7a9d33781c" />
-
-
 
 ---
 
