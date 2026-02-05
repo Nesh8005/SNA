@@ -571,6 +571,7 @@ mydomain = bungkus.org
 myorigin = $mydomain
 inet_interfaces = all
 mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+home_mailbox = Maildir/
 
 # Network Settings
 mynetworks = 192.168.200.0/24, 127.0.0.0/8
@@ -589,6 +590,11 @@ smtpd_sasl_auth_enable = yes
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
 broken_sasl_auth_clients = yes
+
+
+# Mailbox Format
+home_mailbox = Maildir/
+
 ```
 
 **Explanation of Each Section:**
@@ -621,6 +627,7 @@ broken_sasl_auth_clients = yes
 - `smtpd_sasl_security_options`: Disable anonymous authentication
 - `broken_sasl_auth_clients`: Support for older mail clients
 
+
 <img width="1918" height="502" alt="image" src="https://github.com/user-attachments/assets/401ac7fe-11ec-4ef3-81d6-ef4a18e0672d" />
 
 <img width="634" height="95" alt="image" src="https://github.com/user-attachments/assets/5818ad15-fae4-48c7-93cf-c8413947261f" />
@@ -636,6 +643,9 @@ broken_sasl_auth_clients = yes
 <img width="865" height="127" alt="image" src="https://github.com/user-attachments/assets/d6c4408d-056e-4499-a1a7-895852f953be" />
 
 <img width="1176" height="355" alt="image" src="https://github.com/user-attachments/assets/aacf0735-c688-41ff-8ac2-91c894df3a57" />
+
+<img width="779" height="155" alt="image" src="https://github.com/user-attachments/assets/ded09ec8-4802-4de9-b94f-88f8f8581bc0" />
+
 
 
 
@@ -755,8 +765,44 @@ smtps     inet  n       -       n       -       -       smtpd
 ---
 
 ## Phase 4: Dovecot Configuration
+### Step 11: Configure Dovecot Mail Location
 
-### Step 11: Configure Dovecot SSL
+**Command:**
+
+```bash
+sudo nano /etc/dovecot/conf.d/10-mail.conf
+```
+
+**Explanation:** Tells Dovecot where to find user emails. By default, it might be looking in the wrong place. We need to match the "Maildir" setting we just configured in Postfix.
+
+**📸 [TAKE SCREENSHOT]** - Show file opened
+
+---
+
+**Find and Modify:**
+
+Find the line starting with `mail_location =` and change it to:
+
+```
+mail_location = maildir:~/Maildir
+```
+
+**Explanation:**
+
+- `maildir:`: Use the Maildir format (one file per email)
+- `~/Maildir`: Store emails in the "Maildir" folder inside each user's home directory (e.g., `/home/dineesh/Maildir`)
+
+**📸 [TAKE SCREENSHOT]** - Show modified mail_location line
+
+---
+
+**Save and exit**
+
+**📸 [TAKE SCREENSHOT]** - Show save
+
+---
+
+### Step 12: Configure Dovecot SSL
 
 **Command:**
 
@@ -769,6 +815,19 @@ sudo nano /etc/dovecot/conf.d/10-ssl.conf
 <img width="1869" height="122" alt="image" src="https://github.com/user-attachments/assets/27fb6a4d-f260-4c36-b345-938ac3448b8b" />
 
 ---
+
+**Command:**
+
+```bash
+sudo nano /etc/dovecot/conf.d/10-mail.conf
+```
+
+**Explanation:** Opens Dovecot's SSL configuration file where we specify certificate paths and SSL requirements.
+
+<img width="1773" height="147" alt="image" src="https://github.com/user-attachments/assets/b9e6115b-64b1-411a-bf8d-fa8a32c3a433" />
+
+---
+
 
 **Find and Modify:**
 
@@ -796,7 +855,7 @@ ssl_min_protocol = TLSv1.2
 
 ---
 
-### Step 12: Configure Dovecot Authentication
+### Step 13: Configure Dovecot Authentication
 
 **Command:**
 
@@ -836,7 +895,7 @@ auth_mechanisms = plain login
 
 ---
 
-### Step 13: Configure Dovecot for Postfix SASL
+### Step 14: Configure Dovecot for Postfix SASL
 
 **Command:**
 
@@ -878,7 +937,7 @@ service auth {
 
 ## Phase 5: Firewall Configuration
 
-### Step 14: Configure Firewalld
+### Step 15: Configure Firewalld
 
 **Command:**
 
@@ -989,7 +1048,7 @@ sudo firewall-cmd --list-all
 
 ## Phase 6: Start and Enable Services
 
-### Step 15: Start Postfix
+### Step 16: Start Postfix
 
 **Command:**
 
@@ -1034,7 +1093,7 @@ sudo systemctl enable postfix
 
 ---
 
-### Step 16: Start Dovecot
+### Step 17: Start Dovecot
 
 **Command:**
 
@@ -1081,7 +1140,7 @@ sudo systemctl enable dovecot
 
 ## Phase 7: Verification
 
-### Step 17: Verify Listening Ports
+### Step 18: Verify Listening Ports
 
 **Command:**
 
@@ -1097,7 +1156,7 @@ ss -tuln | grep -E '25|465|587|143|993'
 - 143 (IMAP)
 - 993 (IMAPS)
 
-<img width="1889" height="624" alt="image" src="https://github.com/user-attachments/assets/43e3d850-379f-41b5-80a7-cc92303cb194" />
+<img width="1807" height="759" alt="image" src="https://github.com/user-attachments/assets/154a322b-9e07-442d-b773-ee95699c1a12" />
 
 **What to document:**
 
@@ -1114,11 +1173,11 @@ sudo netstat -tlnp | grep -E 'postfix|dovecot'
 
 **Explanation:** Shows which processes are listening on which ports, filtered for postfix and dovecot.
 
-**📸 [TAKE SCREENSHOT]** - Show postfix and dovecot processes with their ports
+<img width="2381" height="545" alt="image" src="https://github.com/user-attachments/assets/f7ae68be-341b-4e26-ae30-a1bee332a4e4" />
 
 ---
 
-### Step 18: Test Local SMTP (Port 25)
+### Step 19: Test Local SMTP (Port 25)
 
 **Command:**
 
@@ -1128,7 +1187,7 @@ telnet localhost 25
 
 **Explanation:** Connects to the SMTP service on port 25 locally to test basic connectivity.
 
-**📸 [TAKE SCREENSHOT]** - Show connection established and banner
+<img width="1151" height="405" alt="image" src="https://github.com/user-attachments/assets/ebec60d6-2196-4257-a30f-717ee0a61874" />
 
 **Expected Output:**
 
@@ -1144,7 +1203,7 @@ telnet localhost 25
 
 ---
 
-### Step 19: Test SMTP with STARTTLS
+### Step 20: Test SMTP with STARTTLS
 
 **Command:**
 
@@ -1159,7 +1218,7 @@ openssl s_client -connect localhost:25 -starttls smtp
 - Shows SSL/TLS handshake details
 - Verifies certificate
 
-**📸 [TAKE SCREENSHOT]** - Show TLS handshake success and certificate details
+<img width="2164" height="1487" alt="image" src="https://github.com/user-attachments/assets/f6dfbb22-2360-42fa-b2e3-8208d9d8dc6a" />
 
 **What to document:**
 
@@ -1172,7 +1231,7 @@ openssl s_client -connect localhost:25 -starttls smtp
 
 ---
 
-### Step 20: Test SMTPS (Port 465)
+### Step 21: Test SMTPS (Port 465)
 
 **Command:**
 
@@ -1182,7 +1241,9 @@ openssl s_client -connect localhost:465
 
 **Explanation:** Tests SMTPS (immediate TLS on port 465). No STARTTLS needed, connection is encrypted from the start.
 
-**📸 [TAKE SCREENSHOT]** - Show connection and Postfix banner over TLS
+<img width="1736" height="65" alt="image" src="https://github.com/user-attachments/assets/0997a582-45e0-41b0-b230-d7a5ea526889" />
+
+<img width="2217" height="1462" alt="image" src="https://github.com/user-attachments/assets/87f3830c-31f7-40fb-9a9d-33ba02cb175d" />
 
 **What to document:**
 
@@ -1193,7 +1254,7 @@ openssl s_client -connect localhost:465
 
 ---
 
-### Step 21: Test Submission (Port 587)
+### Step 22: Test Submission (Port 587)
 
 **Command:**
 
@@ -1201,15 +1262,15 @@ openssl s_client -connect localhost:465
 openssl s_client -connect localhost:587 -starttls smtp
 ```
 
-**Explanation:** Tests the submission port (587) with STARTTLS.
+<img width="2121" height="74" alt="image" src="https://github.com/user-attachments/assets/7ade5b82-6d1a-4500-9f25-5ecf2b702624" />
 
-**📸 [TAKE SCREENSHOT]** - Show successful connection
+<img width="2239" height="1499" alt="image" src="https://github.com/user-attachments/assets/d8697ec3-8862-4783-bab8-713576c083a7" />
 
 **Type `QUIT` and Enter to exit**
 
 ---
 
-### Step 22: Test IMAPS (Port 993)
+### Step 23: Test IMAPS (Port 993)
 
 **Command:**
 
@@ -1219,7 +1280,10 @@ openssl s_client -connect localhost:993
 
 **Explanation:** Tests IMAPS (IMAP over TLS on port 993). Should show Dovecot banner.
 
-**📸 [TAKE SCREENSHOT]** - Show Dovecot ready message
+<img width="1793" height="156" alt="image" src="https://github.com/user-attachments/assets/3e418311-ae14-4b21-8c18-701c9749c7e6" />
+
+<img width="2527" height="247" alt="image" src="https://github.com/user-attachments/assets/5c722b3f-0b14-4c8c-849b-9886065773bc" />
+
 
 **Expected Output:**
 
@@ -1237,7 +1301,7 @@ openssl s_client -connect localhost:993
 
 ---
 
-### Step 23: Send Test Email Locally
+### Step 24: Send Test Email Locally
 
 **Command:**
 
@@ -1247,7 +1311,7 @@ openssl s_client -starttls smtp -connect localhost:25 -quiet
 
 **Explanation:** Opens an encrypted SMTP session for sending a test email.
 
-**📸 [TAKE SCREENSHOT]** - Show connection established
+<img width="2297" height="561" alt="image" src="https://github.com/user-attachments/assets/fce10133-719a-4f21-a1e7-389acc3f4bb5" />
 
 ---
 
@@ -1274,7 +1338,10 @@ QUIT
 - `.` (period alone): End message
 - `QUIT`: Close connection
 
-**📸 [TAKE SCREENSHOT]** - Show all commands and "250 OK" responses
+<img width="856" height="741" alt="image" src="https://github.com/user-attachments/assets/1a4e170e-a249-42ab-a031-94411f15f9e2" />
+
+<img width="1733" height="650" alt="image" src="https://github.com/user-attachments/assets/57b2eeb8-aec2-4ee8-8936-ea4ab1b815fa" />
+
 
 **What to document:**
 
@@ -1284,7 +1351,7 @@ QUIT
 
 ---
 
-### Step 24: Verify Email Was Queued
+### Step 25: Verify Email Was Queued
 
 **Command:**
 
@@ -1294,7 +1361,7 @@ sudo mailq
 
 **Explanation:** Shows the mail queue. If email was delivered locally, queue should be empty. If it's still being processed, you'll see it here.
 
-**📸 [TAKE SCREENSHOT]** - Show mail queue status
+<img width="957" height="196" alt="image" src="https://github.com/user-attachments/assets/15dc6a2a-7bed-41f3-83c4-e245d97fce14" />
 
 ---
 
@@ -1306,7 +1373,10 @@ sudo tail -20 /var/log/maillog
 
 **Explanation:** Shows the last 20 lines of the mail server log to see the email delivery.
 
-**📸 [TAKE SCREENSHOT]** - Show log entries for your test email
+<img width="1796" height="151" alt="image" src="https://github.com/user-attachments/assets/69a969fd-484a-4204-8e7f-13b5bff8a50d" />
+
+<img width="2537" height="940" alt="image" src="https://github.com/user-attachments/assets/45283334-2011-4259-bd2f-bf84cdac5572" />
+
 
 **What to document:**
 
@@ -1316,7 +1386,7 @@ sudo tail -20 /var/log/maillog
 
 ---
 
-### Step 25: Retrieve Email via IMAP
+### Step 26: Retrieve Email via IMAP
 
 **Command:**
 
@@ -1326,7 +1396,7 @@ openssl s_client -connect localhost:993 -quiet
 
 **Explanation:** Opens encrypted IMAP connection to retrieve the test email.
 
-**📸 [TAKE SCREENSHOT]** - Show Dovecot ready
+<img width="1969" height="123" alt="image" src="https://github.com/user-attachments/assets/d1311f68-abf2-4313-aa0e-3020a8009565" />
 
 ---
 
@@ -1367,7 +1437,7 @@ Your Rocky Linux mail server is now fully configured and tested!
 
 ## Phase 8: Ubuntu Client Configuration
 
-### Step 26: Configure Hosts File on Ubuntu
+### Step 27: Configure Hosts File on Ubuntu
 
 **Command:**
 
