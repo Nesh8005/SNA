@@ -1597,7 +1597,7 @@ ls -la thunderbird/
 
 **Explanation:** Lists contents of extracted Thunderbird folder to verify extraction was successful.
 
-**📸 [TAKE SCREENSHOT]** - Show Thunderbird directory contents
+<img width="1343" height="1500" alt="image" src="https://github.com/user-attachments/assets/617e4c03-dcda-4e4b-ac08-140fcbc1ecdb" />
 
 ---
 
@@ -1611,7 +1611,7 @@ sudo mv thunderbird /opt/
 
 **Explanation:** Moves Thunderbird to /opt/ directory (standard location for third-party applications in Linux).
 
-**📸 [TAKE SCREENSHOT]** - Show move command
+<img width="1570" height="142" alt="image" src="https://github.com/user-attachments/assets/df6b9132-467d-4ce9-9d58-378d051c9ba6" />
 
 ---
 
@@ -1626,7 +1626,7 @@ sudo ln -sf /opt/thunderbird/thunderbird /usr/bin/thunderbird
 - `-s`: Create symbolic link
 - `-f`: Force (overwrite if exists)
 
-**📸 [TAKE SCREENSHOT]** - Show symlink creation
+<img width="2558" height="166" alt="image" src="https://github.com/user-attachments/assets/9a1297ad-8796-4dd5-93ba-2476a66f27f2" />
 
 ---
 
@@ -1638,7 +1638,7 @@ which thunderbird
 
 **Explanation:** Verifies the symlink is working and shows the path.
 
-**📸 [TAKE SCREENSHOT]** - Show output: /usr/bin/thunderbird
+<img width="1334" height="195" alt="image" src="https://github.com/user-attachments/assets/b8bf9cce-a3e4-4222-9cb0-bc8ebd3d24f8" />
 
 ---
 
@@ -1652,7 +1652,7 @@ thunderbird &
 
 **Explanation:** Launches Thunderbird in the background (& symbol). The terminal remains usable.
 
-**📸 [TAKE SCREENSHOT]** - Show Thunderbird welcome screen
+<img width="2443" height="1431" alt="image" src="https://github.com/user-attachments/assets/6622877d-8e70-4632-b687-21f7bf01e78e" />
 
 ---
 
