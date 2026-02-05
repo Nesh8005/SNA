@@ -1,4 +1,4 @@
-# 📧 SMTP Mail Server Setup Lab - Fresh Installation Guide
+<img width="1569" height="384" alt="image" src="https://github.com/user-attachments/assets/944c2ce1-0a72-4253-80ab-8f48198f13f0" /># 📧 SMTP Mail Server Setup Lab - Fresh Installation Guide
 
 ## Complete Step-by-Step with Screenshot & Explanation Requirements
 
@@ -69,7 +69,7 @@ sudo adduser dineesh
 
 **Explanation:** Creates a new system user account named "dineesh" that will be used for email authentication. Mail servers use Linux system accounts for user authentication.
 
-**📸 [TAKE SCREENSHOT]** - Show the command and the prompts for password/user info
+<img width="1320" height="213" alt="Screenshot 2026-02-05 090259" src="https://github.com/user-attachments/assets/62f983c9-1ff1-46ba-9c2f-3fac4adde1fa" />
 
 **What to document:**
 
@@ -87,7 +87,7 @@ sudo passwd dineesh
 
 **Explanation:** Sets the password "Lab2026" for the dineesh user account. This password will be used later for SMTP/IMAP authentication when connecting with email clients.
 
-**📸 [TAKE SCREENSHOT]** - Show entering password (characters will be hidden)
+<img width="1569" height="384" alt="image" src="https://github.com/user-attachments/assets/f463af07-763c-4431-b506-c7714c1cef52" />
 
 **What to document:**
 
@@ -110,7 +110,7 @@ sudo hostnamectl set-hostname bnaserver.bungkus.org
 - SSL certificates are issued to the FQDN
 - Other mail servers use this for routing
 
-**📸 [TAKE SCREENSHOT]** - Show the command (no output is normal)
+<img width="2074" height="184" alt="image" src="https://github.com/user-attachments/assets/59ba24d9-ed6d-43d5-b45a-4cce4d18dd6d" />
 
 ---
 
@@ -122,7 +122,7 @@ hostnamectl
 
 **Explanation:** Verifies the hostname was set correctly. This displays system information including the static hostname, which should now be "bnaserver.bungkus.org".
 
-**📸 [TAKE SCREENSHOT]** - Show full output with hostname details
+<img width="1523" height="809" alt="image" src="https://github.com/user-attachments/assets/fce03e1a-6d2d-4658-82ff-7498347bd219" />
 
 **What to document:**
 
@@ -140,7 +140,7 @@ hostname -f
 
 **Explanation:** Displays only the FQDN (Fully Qualified Domain Name). This is a quick way to verify the hostname is correct before proceeding.
 
-**📸 [TAKE SCREENSHOT]** - Show command and output
+<img width="948" height="192" alt="image" src="https://github.com/user-attachments/assets/00c8546e-1097-4183-82fa-b5e1a63ced4b" />
 
 **Expected Output:** `bnaserver.bungkus.org`
 
@@ -156,7 +156,10 @@ sudo nano /etc/hosts
 
 **Explanation:** Opens the hosts file for editing. This file maps IP addresses to hostnames locally, allowing the server to resolve its own hostname without DNS.
 
-**📸 [TAKE SCREENSHOT]** - Show nano editor opened
+<img width="1242" height="146" alt="image" src="https://github.com/user-attachments/assets/0ef13bdf-d160-4155-8e61-11e5a22e915a" />
+
+<img width="2531" height="1529" alt="image" src="https://github.com/user-attachments/assets/1535006a-0369-47df-8089-7becd49c1771" />
+
 
 ---
 
@@ -172,7 +175,7 @@ sudo nano /etc/hosts
 - This is essential for the mail server to identify itself correctly
 - Without this, services may fail to start or malfunction
 
-**📸 [TAKE SCREENSHOT]** - Show the edited hosts file with the new line added
+<img width="2230" height="271" alt="image" src="https://github.com/user-attachments/assets/8f756ac6-0c03-4a9a-a69c-3d331ad8a67b" />
 
 **What to document:**
 
@@ -187,7 +190,7 @@ sudo nano /etc/hosts
 - Press `Enter` (Confirm filename)
 - Press `Ctrl + X` (Exit)
 
-**📸 [TAKE SCREENSHOT]** - Show the save confirmation at bottom of screen
+<img width="2359" height="261" alt="image" src="https://github.com/user-attachments/assets/c74b1cb3-bbf7-4f6f-a4c4-1f19e203790f" />
 
 ---
 
@@ -199,7 +202,7 @@ cat /etc/hosts
 
 **Explanation:** Displays the contents of the hosts file to verify your changes were saved correctly.
 
-**📸 [TAKE SCREENSHOT]** - Show the hosts file contents
+<img width="2230" height="295" alt="image" src="https://github.com/user-attachments/assets/93cbb620-4759-48c3-9995-bc1904e3efee" />
 
 **What to document:**
 
