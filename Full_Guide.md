@@ -1692,18 +1692,21 @@ thunderbird &
 **Action:**
 
 1. Open Thunderbird.
-2. Go to **Account Settings** -> **Account Actions** -> **Add Mail Account**.
-3. Enter your details:
+2. Enter your details:
    - **Name:** `dineesh`
    - **Email:** `dineesh@bungkus.org`
    - **Password:** `Lab2026`
-4. Click **Configure manually**.
-5. **Enter these EXACT Server Settings:**
+3. Click **Configure manually**.
+4. **Enter these EXACT Server Settings:**
    - **Incoming:** Protocol `IMAP`, Hostname `bnaserver.bungkus.org`, Port `993`, SSL `SSL/TLS`, Auth `Normal password`, Username `dineesh`
    - **Outgoing:** Protocol `SMTP`, Hostname `bnaserver.bungkus.org`, Port `465`, SSL `SSL/TLS`, Auth `Normal password`, Username `dineesh`
-6. **CRITICAL:** Do NOT click "Done" yet. Click **Advanced Config**.
+5. **CRITICAL:** Do NOT click "Done" yet. Click **Advanced Config**.
+6. Click **OK**
 
-**📸 [TAKE SCREENSHOT]** - Show the manual config screen just before clicking "Advanced Config".
+<img width="983" height="874" alt="image" src="https://github.com/user-attachments/assets/66a1d0f6-9d21-4e95-8101-c071bb5484c5" />
+
+<img width="973" height="341" alt="image" src="https://github.com/user-attachments/assets/7ba92fd4-e9b9-4f3a-a28e-9c49df315792" />
+
 
 ---
 
@@ -1721,7 +1724,19 @@ thunderbird &
 8. **CHECK both trust boxes** (Trust for websites, Trust for email users).
 9. Click **OK**, then **OK**, then close the Settings tab.
 
-**📸 [TAKE SCREENSHOT]** - Show the "Query OCSP" box unchecked AND/OR the Certificate Import success.
+<img width="997" height="225" alt="image" src="https://github.com/user-attachments/assets/a6f4e624-2387-48eb-a8b2-85fbcbfdace8" />
+
+<img width="990" height="554" alt="image" src="https://github.com/user-attachments/assets/69148fca-4da8-4fdc-b2dd-b577733fadc4" />
+
+<img width="984" height="226" alt="image" src="https://github.com/user-attachments/assets/e451f9f7-ea66-4393-864f-018107f63f72" />
+
+<img width="1002" height="460" alt="image" src="https://github.com/user-attachments/assets/a5809c86-8af8-4bc0-87d0-811412438257" />
+
+<img width="990" height="597" alt="image" src="https://github.com/user-attachments/assets/f1d962c2-f0f1-4fe1-b6fa-77e4fc66a3c1" />
+
+
+
+
 
 ---
 
@@ -1734,7 +1749,13 @@ thunderbird &
 3. A **"Security Exception"** popup may appear (due to self-signed certificate quirks).
 4. Click **Confirm Security Exception**.
 
-**📸 [TAKE SCREENSHOT]** - Show the "Confirm Security Exception" popup if it appears, or the main window processing the login.
+<img width="953" height="618" alt="image" src="https://github.com/user-attachments/assets/938bba8d-0cb0-4041-acb3-6c5dff86b3ad" />
+
+<img width="968" height="530" alt="image" src="https://github.com/user-attachments/assets/fb4bca3f-d1ec-4e41-9c47-f313cffe639b" />
+
+<img width="988" height="771" alt="image" src="https://github.com/user-attachments/assets/41935ac1-8c77-4b88-aca4-b2a59a3a6f05" />
+
+
 
 ---
 
@@ -1749,7 +1770,13 @@ thunderbird &
 5. Click **Get Messages** again.
 6. **"Tada!"** The email should appear in your Inbox.
 
-**📸 [TAKE SCREENSHOT]** - Show the final successful Inbox with your test email received.
+<img width="966" height="327" alt="image" src="https://github.com/user-attachments/assets/c2eb899f-b8ba-4c1d-9eb5-17303f6c2c40" />
+
+<img width="1718" height="491" alt="image" src="https://github.com/user-attachments/assets/73ab8fce-239a-4666-8ed5-7e52c4a8ff2c" />
+
+<img width="2333" height="426" alt="image" src="https://github.com/user-attachments/assets/76fa8ee6-0c3f-4d84-aa47-6e7a9d33781c" />
+
+
 
 ---
 
