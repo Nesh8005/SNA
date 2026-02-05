@@ -13,3 +13,6 @@ smtps     inet  n       -       n       -       -       smtpd
   -o smtpd_sasl_type=dovecot
   -o smtpd_sasl_path=private/auth
   -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+
+
+echo "Hello Maildir" | mail -s "Maildir Test 2" dineesh@bungkus.org
