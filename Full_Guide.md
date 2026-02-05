@@ -221,7 +221,7 @@ ip addr show
 
 **Explanation:** Displays all network interfaces and their IP addresses. Use this to verify your server has the correct IP (192.168.200.3) assigned.
 
-**📸 [TAKE SCREENSHOT]** - Show full output
+<img width="2535" height="819" alt="image" src="https://github.com/user-attachments/assets/8d2c441a-ffa3-4d92-bd75-c3cb45e5f394" />
 
 **What to document:**
 
@@ -239,7 +239,7 @@ ip route
 
 **Explanation:** Shows the routing table, including the default gateway. This is critical - we learned that hostname changes can sometimes remove the gateway!
 
-**📸 [TAKE SCREENSHOT]** - Show routing table
+<img width="2288" height="264" alt="image" src="https://github.com/user-attachments/assets/b3d35ea3-a438-498f-95f8-c1e829dcbd9d" />
 
 **What to document:**
 
@@ -258,7 +258,62 @@ sudo ip route add default via 192.168.200.2 dev enp0s3
 
 **Explanation:** Manually adds the default gateway to the routing table. Replace "enp0s3" with your actual interface name from `ip addr show`. This tells the server where to send traffic destined for the internet.
 
-**📸 [TAKE SCREENSHOT]** - Show command execution (only if needed)
+<img width="2169" height="126" alt="image" src="https://github.com/user-attachments/assets/a2d3d408-b76f-4934-8480-43695523eb46" />
+
+---
+
+**Command:**
+
+```bash
+ip route
+```
+
+**Explanation:** Check the routing table again after adding the gateway. You might see TWO default gateways now (one you just added manually via 192.168.200.2, and possibly one from DHCP via 192.168.200.1). We need to clean this up to avoid routing conflicts.
+
+<img width="2267" height="311" alt="image" src="https://github.com/user-attachments/assets/e1d62c85-a140-47bf-99e5-d1787375f449" />
+
+**What to document:**
+
+- Check if you see two "default via" lines  
+- One pointing to 192.168.200.2 (manual - this is correct)
+- One pointing to 192.168.200.1 (DHCP - needs to be removed)
+
+---
+
+**Command (only if you see a duplicate gateway via 192.168.200.1):**
+
+```bash
+sudo ip route del default via 192.168.200.1
+```
+
+**Explanation:** Removes the duplicate default gateway created by DHCP. We only want ONE default gateway (192.168.200.2) to avoid routing conflicts and ensure all traffic goes through the correct gateway.
+
+**📸 [TAKE SCREENSHOT]** - Show command execution
+
+---
+
+**Command:**
+
+```bash
+ip route
+```
+
+**Explanation:** Verify the routing table is now clean with only ONE default gateway pointing to the correct address (192.168.200.2).
+
+**📸 [TAKE SCREENSHOT]** - Show clean routing table
+
+**What to document:**
+
+- Should see only ONE "default via 192.168.200.2" line
+- Local network route (192.168.200.0/24)
+- No duplicate routes
+
+**Expected Output:**
+
+```
+default via 192.168.200.2 dev enp0s3
+192.168.200.0/24 dev enp0s3 proto kernel scope link src 192.168.200.3
+```
 
 ---
 
