@@ -930,7 +930,7 @@ sudo firewall-cmd --permanent --add-port=587/tcp
 
 **Explanation:** Opens port 587 (Submission - SMTP with STARTTLS). We use `add-port` because the "submission" service name is often not defined by default on Rocky Linux.
 
-**📸 [TAKE SCREENSHOT]** - Show command
+<img width="1961" height="262" alt="image" src="https://github.com/user-attachments/assets/fb524ff7-7036-49fd-8ad7-09d70dae2ee1" />
 
 ---
 
@@ -942,7 +942,7 @@ sudo firewall-cmd --permanent --add-port=143/tcp
 
 **Explanation:** Opens port 143 (IMAP) for mail retrieval.
 
-**📸 [TAKE SCREENSHOT]** - Show command
+<img width="1971" height="220" alt="image" src="https://github.com/user-attachments/assets/2ee1c504-f7b9-4a0d-81e2-ad03b8752b1d" />
 
 ---
 
@@ -954,7 +954,7 @@ sudo firewall-cmd --permanent --add-port=993/tcp
 
 **Explanation:** Opens port 993 (IMAPS - IMAP over TLS).
 
-**📸 [TAKE SCREENSHOT]** - Show command
+<img width="1964" height="172" alt="image" src="https://github.com/user-attachments/assets/923b0eca-226f-4629-98b1-434d669f8c53" />
 
 ---
 
@@ -966,7 +966,7 @@ sudo firewall-cmd --reload
 
 **Explanation:** Reloads the firewall configuration to apply all the permanent changes we just made.
 
-**📸 [TAKE SCREENSHOT]** - Show reload success
+<img width="1344" height="201" alt="image" src="https://github.com/user-attachments/assets/79afe2bd-9a8a-4c1c-b69c-9958858c711f" />
 
 ---
 
@@ -978,7 +978,7 @@ sudo firewall-cmd --list-all
 
 **Explanation:** Verify all the services were added to the firewall.
 
-**📸 [TAKE SCREENSHOT]** - Show NEW firewall state with all services
+<img width="2113" height="892" alt="image" src="https://github.com/user-attachments/assets/24801f6a-ea65-42a1-847d-aa68b564a267" />
 
 **What to document:**
 
@@ -999,7 +999,7 @@ sudo systemctl start postfix
 
 **Explanation:** Starts the Postfix mail server service. This doesn't enable it to auto-start on boot yet.
 
-**📸 [TAKE SCREENSHOT]** - Show command (no output = success)
+<img width="1403" height="211" alt="image" src="https://github.com/user-attachments/assets/5cfc0a7a-046c-4f05-b3a2-e5a693f4780c" />
 
 ---
 
@@ -1011,7 +1011,7 @@ sudo systemctl status postfix
 
 **Explanation:** Checks if Postfix is running and shows recent log entries.
 
-**📸 [TAKE SCREENSHOT]** - Show full status output
+<img width="2538" height="1243" alt="image" src="https://github.com/user-attachments/assets/cadcfebd-7a97-45b2-ae95-283070d4ff01" />
 
 **What to document:**
 
@@ -1030,7 +1030,7 @@ sudo systemctl enable postfix
 
 **Explanation:** Configures Postfix to automatically start when the system boots.
 
-**📸 [TAKE SCREENSHOT]** - Show command and symlink creation message
+<img width="2535" height="219" alt="image" src="https://github.com/user-attachments/assets/64912f22-b383-40be-890f-95861843a7af" />
 
 ---
 
@@ -1044,7 +1044,7 @@ sudo systemctl start dovecot
 
 **Explanation:** Starts the Dovecot IMAP server.
 
-**📸 [TAKE SCREENSHOT]** - Show command
+<img width="1451" height="221" alt="image" src="https://github.com/user-attachments/assets/bcfa87a8-d66d-45e8-8f4c-a8bb9e80f8a2" />
 
 ---
 
@@ -1056,7 +1056,7 @@ sudo systemctl status dovecot
 
 **Explanation:** Verifies Dovecot is running.
 
-**📸 [TAKE SCREENSHOT]** - Show full status with "active (running)"
+<img width="2537" height="1230" alt="image" src="https://github.com/user-attachments/assets/a6bc8901-1216-4a76-9af8-d72c668f7745" />
 
 **What to document:**
 
@@ -1075,7 +1075,7 @@ sudo systemctl enable dovecot
 
 **Explanation:** Enable Dovecot to auto-start on boot.
 
-**📸 [TAKE SCREENSHOT]** - Show enable command
+<img width="2530" height="286" alt="image" src="https://github.com/user-attachments/assets/7c120649-aa1a-48a5-a5cb-cad56e253b98" />
 
 ---
 
@@ -1097,7 +1097,7 @@ ss -tuln | grep -E '25|465|587|143|993'
 - 143 (IMAP)
 - 993 (IMAPS)
 
-**📸 [TAKE SCREENSHOT]** - Show all 5 ports in LISTEN state
+<img width="1889" height="624" alt="image" src="https://github.com/user-attachments/assets/43e3d850-379f-41b5-80a7-cc92303cb194" />
 
 **What to document:**
 
