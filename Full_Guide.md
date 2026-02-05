@@ -288,7 +288,7 @@ sudo ip route del default via 192.168.200.1
 
 **Explanation:** Removes the duplicate default gateway created by DHCP. We only want ONE default gateway (192.168.200.2) to avoid routing conflicts and ensure all traffic goes through the correct gateway.
 
-**📸 [TAKE SCREENSHOT]** - Show command execution
+<img width="1864" height="131" alt="image" src="https://github.com/user-attachments/assets/551dbd1b-2b1c-4d3f-a316-483a92a64290" />
 
 ---
 
@@ -300,7 +300,7 @@ ip route
 
 **Explanation:** Verify the routing table is now clean with only ONE default gateway pointing to the correct address (192.168.200.2).
 
-**📸 [TAKE SCREENSHOT]** - Show clean routing table
+<img width="2328" height="268" alt="image" src="https://github.com/user-attachments/assets/673daf1d-af68-438b-8017-a91c6a41b81f" />
 
 **What to document:**
 
@@ -331,7 +331,18 @@ ping -c 3 8.8.8.8
 
 - Whether packets are received (success) or lost (failure)
 - Round-trip time
-- Note: In VirtualBox NAT, this MIGHT fail even when internet works!
+
+**⚠️ IMPORTANT - VirtualBox NAT Limitation:**
+
+**If ping fails with "Network unreachable" or 100% packet loss, this is NORMAL!**
+
+VirtualBox NAT networks block ICMP (ping) packets for security reasons, even when internet connectivity is fully functional. This does NOT indicate a problem with your mail server setup.
+
+**For your documentation, explain:**
+
+- Ping failed due to VirtualBox NAT blocking ICMP traffic
+- This is expected behavior in NAT network mode
+- Not an error - internet connectivity is verified using curl instead (next step)
 
 ---
 
