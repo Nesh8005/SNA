@@ -812,18 +812,6 @@ sudo nano /etc/dovecot/conf.d/10-ssl.conf
 
 **Explanation:** Opens Dovecot's SSL configuration file where we specify certificate paths and SSL requirements.
 
-<img width="1869" height="122" alt="image" src="https://github.com/user-attachments/assets/27fb6a4d-f260-4c36-b345-938ac3448b8b" />
-
----
-
-**Command:**
-
-```bash
-sudo nano /etc/dovecot/conf.d/10-mail.conf
-```
-
-**Explanation:** Opens Dovecot's SSL configuration file where we specify certificate paths and SSL requirements.
-
 <img width="1773" height="147" alt="image" src="https://github.com/user-attachments/assets/b9e6115b-64b1-411a-bf8d-fa8a32c3a433" />
 
 ---
@@ -1656,153 +1644,114 @@ thunderbird &
 
 ---
 
-## Phase 10: Thunderbird Email Account Configuration
+## Phase 10: Certificate Import & Thunderbird Configuration
 
-### Step 32: Add Mail Account
+### Step 32: Transfer Certificate to Client
 
-**In Thunderbird:**
+**On Rocky Linux (Server):**
 
-1. Click "Set up an account" or "Email"
-2. Enter:
-   - **Your name:** dineesh
-   - **Email address:** <dineesh@bungkus.org>
-   - **Password:** Lab2026
+**Command:**
 
-**📸 [TAKE SCREENSHOT]** - Show account setup form filled in
+```bash
+cd /etc/pki/tls/certs/
+sudo python3 -m http.server 80
+```
 
----
+**Explanation:** Temporarily starts a simple web server on port 80 to allow us to download the certificate file to the client.
 
-1. Click "Continue"
-2. Thunderbird will try auto-detection (it will fail - that's expected)
+<img width="1271" height="176" alt="image" src="https://github.com/user-attachments/assets/8bbcd397-be48-4cc8-a6a7-932c287eada3" />
 
-**📸 [TAKE SCREENSHOT]** - Show "Could not find settings" or similar message
+<img width="1446" height="264" alt="image" src="https://github.com/user-attachments/assets/81bf0074-0fca-4214-8858-a0d68ae18f36" />
 
----
-
-### Step 33: Manual Configuration
-
-1. Click "Manual config" or "Configure manually"
-
-**📸 [TAKE SCREENSHOT]** - Show manual configuration screen
 
 ---
 
-1. Enter these settings:
+**On Ubuntu (Client):**
 
-**Incoming (IMAP):**
+1. Open Firefox
+2. Visit: `http://192.168.200.3/bnaserver.pem`
+3. Save the file to **Downloads**
 
-- **Server hostname:** bnaserver.bungkus.org (or 192.168.200.3)
-- **Port:** 993
-- **SSL:** SSL/TLS
-- **Authentication:** Normal password
-- **Username:** dineesh
-
-**Outgoing (SMTP):**
-
-- **Server hostname:** bnaserver.bungkus.org (or 192.168.200.3)
-- **Port:** 465
-- **SSL:** SSL/TLS
-- **Authentication:** Normal password
-- **Username:** dineesh
-
-**📸 [TAKE SCREENSHOT]** - Show all manual configuration settings
-
-**What to document:**
-
-- All fields filled correctly
-- Port numbers
-- SSL/TLS selected
-- Username is "dineesh" NOT "<dineesh@bungkus.org>"
+<img width="800" height="264" alt="image" src="https://github.com/user-attachments/assets/93db93a7-2124-41b8-bbcb-7e6ba6f6744e" />
 
 ---
 
-### Step 34: Disable OCSP (Critical!)
+### Step 33: Import Certificate to Thunderbird
 
-**Before clicking "Done":**
+**Command:**
 
-1. Open Settings (Hamburger menu → Settings)
-2. Search for "OCSP"
-3. **UNCHECK** "Query OCSP responder servers to confirm validity of certificates"
+```bash
+thunderbird &
+```
+<img width="2521" height="352" alt="image" src="https://github.com/user-attachments/assets/dbb4db64-4ff4-46c5-ab15-f91a60a99c94" />
 
-**📸 [TAKE SCREENSHOT]** - Show OCSP option unchecked
+**Explanation:** Launches Thunderbird.
 
-**Explanation:** Self-signed certificates can't be validated via OCSP, causing Thunderbird to hang indefinitely. Disabling OCSP prevents this.
+### Step 34: Configure Account & Server Settings
 
----
+**Action:**
 
-### Step 35: Security Exception
+1. Open Thunderbird.
+2. Go to **Account Settings** -> **Account Actions** -> **Add Mail Account**.
+3. Enter your details:
+   - **Name:** `dineesh`
+   - **Email:** `dineesh@bungkus.org`
+   - **Password:** `Lab2026`
+4. Click **Configure manually**.
+5. **Enter these EXACT Server Settings:**
+   - **Incoming:** Protocol `IMAP`, Hostname `bnaserver.bungkus.org`, Port `993`, SSL `SSL/TLS`, Auth `Normal password`, Username `dineesh`
+   - **Outgoing:** Protocol `SMTP`, Hostname `bnaserver.bungkus.org`, Port `465`, SSL `SSL/TLS`, Auth `Normal password`, Username `dineesh`
+6. **CRITICAL:** Do NOT click "Done" yet. Click **Advanced Config**.
 
-1. Go back to account setup and click "Done"
-2. A certificate warning will appear
-
-**📸 [TAKE SCREENSHOT]** - Show certificate warning dialog
-
----
-
-1. Click "Confirm Security Exception" or "Add Exception"
-
-**📸 [TAKE SCREENSHOT]** - Show security exception confirmation
-
-**What to document:**
-
-- Certificate details showing CN=bnaserver.bungkus.org
-- Check "Permanently store this exception"
+**📸 [TAKE SCREENSHOT]** - Show the manual config screen just before clicking "Advanced Config".
 
 ---
 
-### Step 36: Verify Connection Success
+### Step 35: Import Certificate & Disable OCSP
 
-**📸 [TAKE SCREENSHOT]** - Show Thunderbird main window with account connected
+**Action:**
 
-**What to document:**
+1. In the Advanced Settings window, ensure `bnaserver.bungkus.org` is selected on the left.
+2. In the search box at the top right, type: **OCSP**
+3. **UNCHECK** the box for `"Query OCSP responder servers to confirm the current validity of certificates"`.
+4. Now, search for **Certificates** in the settings search box.
+5. Click **Manage Certificates...**
+6. Go to the **Authorities** tab -> **Import...**
+7. Select your `bnaserver.pem` file.
+8. **CHECK both trust boxes** (Trust for websites, Trust for email users).
+9. Click **OK**, then **OK**, then close the Settings tab.
 
-- Account "<dineesh@bungkus.org>" in left panel
-- Inbox visible
-- Your test email from earlier should appear!
-
----
-
-### Step 37: View Test Email
-
-Click on the test email in the inbox.
-
-**📸 [TAKE SCREENSHOT]** - Show email content displayed
-
-**What to document:**
-
-- Subject: "Test Email from SMTP Lab"
-- Full email body
-- From/To headers
+**📸 [TAKE SCREENSHOT]** - Show the "Query OCSP" box unchecked AND/OR the Certificate Import success.
 
 ---
 
-### Step 38: Send Test Email from Thunderbird
+### Step 36: Finalize Connection & Handle Exception
 
-1. Click "Write" (new message)
-2. Fill in:
-   - **To:** <dineesh@bungkus.org>
-   - **Subject:** Test from Thunderbird
-   - **Body:** Testing SMTP send from Thunderbird client
+**Action:**
 
-**📸 [TAKE SCREENSHOT]** - Show compose window
+1. Go back to the main Mail tab (click the "Mail" icon on the top left toolbar).
+2. Click the **Get Messages** (Cloud icon) button.
+3. A **"Security Exception"** popup may appear (due to self-signed certificate quirks).
+4. Click **Confirm Security Exception**.
 
----
-
-1. Click "Send"
-
-**📸 [TAKE SCREENSHOT]** - Show email being sent
+**📸 [TAKE SCREENSHOT]** - Show the "Confirm Security Exception" popup if it appears, or the main window processing the login.
 
 ---
 
-1. Wait a few seconds, check inbox for the new message
+### Step 37: Verify Success (Send & Receive)
 
-**📸 [TAKE SCREENSHOT]** - Show new email received
+**Action:**
 
-**What to document:**
+1. Your Inbox should now load without errors.
+2. Click **Write**.
+3. Send an email to yourself (`dineesh@bungkus.org`) with subject "Final Test".
+4. Click **Send**.
+5. Click **Get Messages** again.
+6. **"Tada!"** The email should appear in your Inbox.
 
-- Email sent successfully
-- Email appears in inbox
-- Sent folder shows copy of sent message
+**📸 [TAKE SCREENSHOT]** - Show the final successful Inbox with your test email received.
+
+---
 
 ---
 
