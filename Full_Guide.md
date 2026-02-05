@@ -26,8 +26,8 @@
 
 ### User Account
 
-- **Username:** nesh
-- **Password:** 2805
+- **Username:** dineesh
+- **Password:** Lab2026
 
 ---
 
@@ -64,10 +64,10 @@ Expected Output: No output means success. The hostname is changed immediately.
 **Command:**
 
 ```bash
-sudo adduser nesh
+sudo adduser dineesh
 ```
 
-**Explanation:** Creates a new system user account named "nesh" that will be used for email authentication. Mail servers use Linux system accounts for user authentication.
+**Explanation:** Creates a new system user account named "dineesh" that will be used for email authentication. Mail servers use Linux system accounts for user authentication.
 
 **📸 [TAKE SCREENSHOT]** - Show the command and the prompts for password/user info
 
@@ -82,10 +82,10 @@ sudo adduser nesh
 **Command:**
 
 ```bash
-sudo passwd nesh
+sudo passwd dineesh
 ```
 
-**Explanation:** Sets the password "2805" for the nesh user account. This password will be used later for SMTP/IMAP authentication when connecting with email clients.
+**Explanation:** Sets the password "Lab2026" for the dineesh user account. This password will be used later for SMTP/IMAP authentication when connecting with email clients.
 
 **📸 [TAKE SCREENSHOT]** - Show entering password (characters will be hidden)
 
@@ -1201,8 +1201,8 @@ openssl s_client -starttls smtp -connect localhost:25 -quiet
 
 ```
 EHLO localhost
-MAIL FROM:<nesh@bungkus.org>
-RCPT TO:<nesh@bungkus.org>
+MAIL FROM:<dineesh@bungkus.org>
+RCPT TO:<dineesh@bungkus.org>
 DATA
 Subject: Test Email from SMTP Lab
 
@@ -1279,7 +1279,7 @@ openssl s_client -connect localhost:993 -quiet
 **IMAP Commands:**
 
 ```
-A1 LOGIN nesh 2805
+A1 LOGIN dineesh Lab2026
 A2 SELECT INBOX
 A3 FETCH 1 BODY[]
 A4 LOGOUT
@@ -1287,7 +1287,7 @@ A4 LOGOUT
 
 **Explanation:**
 
-- `A1 LOGIN`: Authenticate as user "nesh"
+- `A1 LOGIN`: Authenticate as user "dineesh"
 - `A2 SELECT INBOX`: Open the inbox folder
 - `A3 FETCH 1 BODY[]`: Retrieve full body of message 1
 - `A4 LOGOUT`: Close connection
@@ -1529,9 +1529,9 @@ thunderbird &
 
 1. Click "Set up an account" or "Email"
 2. Enter:
-   - **Your name:** Nesh
-   - **Email address:** <nesh@bungkus.org>
-   - **Password:** 2805
+   - **Your name:** dineesh
+   - **Email address:** <dineesh@bungkus.org>
+   - **Password:** Lab2026
 
 **📸 [TAKE SCREENSHOT]** - Show account setup form filled in
 
@@ -1560,7 +1560,7 @@ thunderbird &
 - **Port:** 993
 - **SSL:** SSL/TLS
 - **Authentication:** Normal password
-- **Username:** nesh
+- **Username:** dineesh
 
 **Outgoing (SMTP):**
 
@@ -1568,7 +1568,7 @@ thunderbird &
 - **Port:** 465
 - **SSL:** SSL/TLS
 - **Authentication:** Normal password
-- **Username:** nesh
+- **Username:** dineesh
 
 **📸 [TAKE SCREENSHOT]** - Show all manual configuration settings
 
@@ -1577,7 +1577,7 @@ thunderbird &
 - All fields filled correctly
 - Port numbers
 - SSL/TLS selected
-- Username is "nesh" NOT "<nesh@bungkus.org>"
+- Username is "dineesh" NOT "<dineesh@bungkus.org>"
 
 ---
 
@@ -1621,7 +1621,7 @@ thunderbird &
 
 **What to document:**
 
-- Account "<nesh@bungkus.org>" in left panel
+- Account "<dineesh@bungkus.org>" in left panel
 - Inbox visible
 - Your test email from earlier should appear!
 
@@ -1645,7 +1645,7 @@ Click on the test email in the inbox.
 
 1. Click "Write" (new message)
 2. Fill in:
-   - **To:** <nesh@bungkus.org>
+   - **To:** <dineesh@bungkus.org>
    - **Subject:** Test from Thunderbird
    - **Body:** Testing SMTP send from Thunderbird client
 
@@ -1730,3 +1730,5 @@ matches our hostname, confirming the certificate was generated correctly.
 ---
 
 **Good luck with your lab documentation! You've got this! 🚀**
+
+
