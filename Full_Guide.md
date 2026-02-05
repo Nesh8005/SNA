@@ -918,16 +918,17 @@ sudo firewall-cmd --permanent --add-service=smtps
 
 **Explanation:** Opens port 465 (SMTPS - SMTP over TLS)
 
+<img width="2017" height="183" alt="image" src="https://github.com/user-attachments/assets/fa796950-a05e-4462-b5e2-87b1590e5c87" />
 
 ---
 
 **Command:**
 
 ```bash
-sudo firewall-cmd --permanent --add-service=submission
+sudo firewall-cmd --permanent --add-port=587/tcp
 ```
 
-**Explanation:** Opens port 587 (Submission - SMTP with STARTTLS)
+**Explanation:** Opens port 587 (Submission - SMTP with STARTTLS). We use `add-port` because the "submission" service name is often not defined by default on Rocky Linux.
 
 **📸 [TAKE SCREENSHOT]** - Show command
 
@@ -936,10 +937,10 @@ sudo firewall-cmd --permanent --add-service=submission
 **Command:**
 
 ```bash
-sudo firewall-cmd --permanent --add-service=imap
+sudo firewall-cmd --permanent --add-port=143/tcp
 ```
 
-**Explanation:** Opens port 143 (IMAP) for mail retrieval
+**Explanation:** Opens port 143 (IMAP) for mail retrieval.
 
 **📸 [TAKE SCREENSHOT]** - Show command
 
@@ -948,10 +949,10 @@ sudo firewall-cmd --permanent --add-service=imap
 **Command:**
 
 ```bash
-sudo firewall-cmd --permanent --add-service=imaps
+sudo firewall-cmd --permanent --add-port=993/tcp
 ```
 
-**Explanation:** Opens port 993 (IMAPS - IMAP over TLS)
+**Explanation:** Opens port 993 (IMAPS - IMAP over TLS).
 
 **📸 [TAKE SCREENSHOT]** - Show command
 
@@ -982,7 +983,7 @@ sudo firewall-cmd --list-all
 **What to document:**
 
 - Compare to the "before" screenshot
-- Highlight the 5 new services added
+- Highlight the new services (smtp, smtps) and ports (587, 143, 993) added
 
 ---
 
