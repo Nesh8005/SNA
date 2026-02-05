@@ -260,7 +260,7 @@ sudo ip route add default via 192.168.200.1 dev enp0s3
 
 **Note:** Most VirtualBox NAT networks use 192.168.200.1 as the gateway. If you already had a gateway (like .2), keep whatever you have - don't delete it! Only run this command if the gateway was completely missing.
 
-**📸 [TAKE SCREENSHOT]** - Show command execution (only if you had to add it)
+<img width="2216" height="150" alt="image" src="https://github.com/user-attachments/assets/1e953ed2-3539-4ebe-be22-629dccde2c2a" />
 
 **What to document:**
 
@@ -278,7 +278,7 @@ ping -c 3 8.8.8.8
 
 **Explanation:** Tests internet connectivity by pinging Google's DNS server. Sends 3 ICMP packets and waits for replies.
 
-**📸 [TAKE SCREENSHOT]** - Show ping results
+<img width="1862" height="482" alt="image" src="https://github.com/user-attachments/assets/24aa5ce0-8df1-49cf-8ea2-2c8b7bd61c34" />
 
 **What to document:**
 
@@ -307,7 +307,7 @@ curl -I https://google.com
 
 **Explanation:** Tests HTTP/HTTPS connectivity by fetching headers from Google. This is a more reliable internet test than ping in VirtualBox environments.
 
-**📸 [TAKE SCREENSHOT]** - Show HTTP headers received
+<img width="2537" height="962" alt="image" src="https://github.com/user-attachments/assets/4e1133e9-ae51-4446-bbe1-ebbb00ac01bb" />
 
 **What to document:**
 
@@ -327,7 +327,10 @@ sudo dnf update -y
 
 **Explanation:** Updates all currently installed packages to their latest versions. The `-y` flag automatically answers "yes" to all prompts. This ensures you have the latest security patches before installing new software.
 
-**📸 [TAKE SCREENSHOT]** - Show update process (beginning and end)
+<img width="1228" height="141" alt="image" src="https://github.com/user-attachments/assets/2a8f8d8e-edb6-4eeb-baf6-3fb0dbb7d2c6" />
+
+<img width="1629" height="1525" alt="image" src="https://github.com/user-attachments/assets/a104f412-28ff-4f0f-b09c-47ceedd0f479" />
+
 
 **What to document:**
 
@@ -348,7 +351,10 @@ sudo dnf install postfix dovecot -y
 - **Postfix**: Mail Transfer Agent (MTA) - handles SMTP (sending/receiving email)
 - **Dovecot**: IMAP/POP3 Server - allows mail clients to retrieve email
 
-**📸 [TAKE SCREENSHOT]** - Show installation process
+<img width="1178" height="78" alt="image" src="https://github.com/user-attachments/assets/90f9cce7-ce3a-4178-b3da-1954ab372e5a" />
+
+<img width="2538" height="1494" alt="image" src="https://github.com/user-attachments/assets/52e82512-7dd5-4b52-b4c9-791dc0e029bb" />
+
 
 **What to document:**
 
@@ -367,7 +373,7 @@ rpm -qa | grep postfix
 
 **Explanation:** Verifies Postfix was installed successfully by querying the RPM package database and filtering for postfix-related packages.
 
-**📸 [TAKE SCREENSHOT]** - Show installed postfix package
+<img width="1277" height="238" alt="image" src="https://github.com/user-attachments/assets/c68570a5-3b9b-4977-b4c2-7654ac2dc420" />
 
 **Expected Output:** `postfix-3.x.x-x.el9.x86_64` (version numbers may vary)
 
@@ -381,7 +387,7 @@ rpm -qa | grep dovecot
 
 **Explanation:** Verifies Dovecot installation the same way as above.
 
-**📸 [TAKE SCREENSHOT]** - Show installed dovecot packages
+<img width="1219" height="252" alt="image" src="https://github.com/user-attachments/assets/8fe362b6-1953-46b4-b313-b3470840436c" />
 
 **Expected Output:** Multiple dovecot packages (dovecot, dovecot-core, etc.)
 
@@ -411,7 +417,7 @@ sudo openssl req -new -x509 -days 365 -nodes \
 - `-subj`: Certificate details (Country, State, Location, Organization, Common Name)
 - **CN=bnaserver.bungkus.org**: MUST match your hostname!
 
-**📸 [TAKE SCREENSHOT]** - Show command execution
+<img width="2549" height="1005" alt="image" src="https://github.com/user-attachments/assets/9a3c1a22-c5fc-41e6-9b8b-6fa46f08fd17" />
 
 **Expected Output:** Usually no output means success
 
@@ -425,7 +431,7 @@ sudo ls -l /etc/pki/tls/certs/bnaserver.pem
 
 **Explanation:** Verifies the certificate file was created and shows its permissions and size.
 
-**📸 [TAKE SCREENSHOT]** - Show file details
+<img width="2151" height="221" alt="image" src="https://github.com/user-attachments/assets/939e5428-cfc4-41d4-b416-6195794bd76f" />
 
 **What to document:**
 
@@ -443,7 +449,7 @@ sudo ls -l /etc/pki/tls/private/bnaserver.key
 
 **Explanation:** Verifies the private key was created. This file is extremely sensitive!
 
-**📸 [TAKE SCREENSHOT]** - Show file details
+<img width="2197" height="233" alt="image" src="https://github.com/user-attachments/assets/c80f46f5-b5b2-42c4-bd75-c347fac25ea2" />
 
 **What to document:**
 
@@ -467,7 +473,7 @@ sudo chmod 600 /etc/pki/tls/private/bnaserver.key
 - 0 (others): no access
 Only root can read/write this file, preventing unauthorized access to your encryption key.
 
-**📸 [TAKE SCREENSHOT]** - Show command and permissions after
+<img width="2022" height="153" alt="image" src="https://github.com/user-attachments/assets/2d307ef2-ee57-4948-8d8a-ba706d7ede6c" />
 
 ---
 
@@ -484,7 +490,7 @@ sudo chmod 644 /etc/pki/tls/certs/bnaserver.pem
 - 4 (others): read only
 The certificate can be publicly readable since it's meant to be shared with clients.
 
-**📸 [TAKE SCREENSHOT]** - Show command
+<img width="1979" height="181" alt="image" src="https://github.com/user-attachments/assets/ebdd51e8-4058-40b6-8d02-644911eb3f50" />
 
 ---
 
@@ -500,7 +506,9 @@ sudo openssl x509 -in /etc/pki/tls/certs/bnaserver.pem -text -noout
 - Validity dates
 - Signature algorithm
 
-**📸 [TAKE SCREENSHOT]** - Show certificate details
+<img width="2114" height="63" alt="image" src="https://github.com/user-attachments/assets/18269c2f-8ed9-41d7-b0e3-abd2d3983913" />
+
+<img width="1063" height="1352" alt="image" src="https://github.com/user-attachments/assets/73b35baa-b961-49e0-9f2c-3cbc19ea5a53" />
 
 **What to document:**
 
@@ -522,7 +530,7 @@ sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.backup
 
 **Explanation:** Creates a backup of the original Postfix configuration file before making changes. This allows you to restore defaults if something goes wrong.
 
-**📸 [TAKE SCREENSHOT]** - Show command
+<img width="2173" height="174" alt="image" src="https://github.com/user-attachments/assets/1e6e8fb5-42d9-4114-b741-dd34f94395e4" />
 
 ---
 
@@ -534,7 +542,7 @@ ls -l /etc/postfix/main.cf*
 
 **Explanation:** Lists both the original and backup configuration files to verify the backup was created.
 
-**📸 [TAKE SCREENSHOT]** - Show both files listed
+<img width="2012" height="351" alt="image" src="https://github.com/user-attachments/assets/bc5f6f55-c48f-47ad-a1c8-2b9124c77d1a" />
 
 ---
 
@@ -548,7 +556,7 @@ sudo nano /etc/postfix/main.cf
 
 **Explanation:** Opens the main Postfix configuration file for editing. This file controls all SMTP server behavior.
 
-**📸 [TAKE SCREENSHOT]** - Show nano editor opened with main.cf
+<img width="1468" height="109" alt="image" src="https://github.com/user-attachments/assets/408fa42a-38e5-45c6-9ce0-bb9a892bc7e8" />
 
 ---
 
@@ -613,7 +621,24 @@ broken_sasl_auth_clients = yes
 - `smtpd_sasl_security_options`: Disable anonymous authentication
 - `broken_sasl_auth_clients`: Support for older mail clients
 
-**📸 [TAKE SCREENSHOT]** - Show the edited main.cf with all these settings
+<img width="1918" height="502" alt="image" src="https://github.com/user-attachments/assets/401ac7fe-11ec-4ef3-81d6-ef4a18e0672d" />
+
+<img width="634" height="95" alt="image" src="https://github.com/user-attachments/assets/5818ad15-fae4-48c7-93cf-c8413947261f" />
+
+<img width="668" height="123" alt="image" src="https://github.com/user-attachments/assets/f197d458-7499-4c70-ae30-bf0c621b4aeb" />
+
+<img width="2040" height="241" alt="image" src="https://github.com/user-attachments/assets/a2938f7a-5519-428a-ae64-5f5798c5f2df" />
+
+<img width="1278" height="94" alt="image" src="https://github.com/user-attachments/assets/f04e2711-ee3d-48ab-adc5-0b575d30f5f9" />
+
+<img width="1791" height="427" alt="image" src="https://github.com/user-attachments/assets/7367692e-2960-444c-8928-27797386931d" />
+
+<img width="865" height="127" alt="image" src="https://github.com/user-attachments/assets/d6c4408d-056e-4499-a1a7-895852f953be" />
+
+<img width="1176" height="355" alt="image" src="https://github.com/user-attachments/assets/aacf0735-c688-41ff-8ac2-91c894df3a57" />
+
+
+
 
 **What to document:**
 
@@ -628,7 +653,7 @@ broken_sasl_auth_clients = yes
 - Enter (confirm)
 - Ctrl+X (exit)
 
-**📸 [TAKE SCREENSHOT]** - Show save confirmation
+<img width="1769" height="260" alt="image" src="https://github.com/user-attachments/assets/97ebd9d8-bb65-4a96-af22-bd6ceedfa433" />
 
 ---
 
@@ -640,7 +665,7 @@ sudo postconf -n
 
 **Explanation:** Displays only the non-default settings in Postfix configuration (excludes all the commented default values). This makes it easy to see what you've actually changed.
 
-**📸 [TAKE SCREENSHOT]** - Show your custom configuration
+<img width="2121" height="1414" alt="image" src="https://github.com/user-attachments/assets/2142ce9c-b78d-4628-b88c-057dadf11de0" />
 
 **What to document:**
 
@@ -659,7 +684,7 @@ sudo cp /etc/postfix/master.cf /etc/postfix/master.cf.backup
 
 **Explanation:** Backup master.cf before editing (same as we did with main.cf)
 
-**📸 [TAKE SCREENSHOT]** - Show backup command
+<img width="2272" height="191" alt="image" src="https://github.com/user-attachments/assets/03738ed1-6ed2-4d0e-8abb-1cb3dc33a5cc" />
 
 ---
 
@@ -671,7 +696,8 @@ sudo nano /etc/postfix/master.cf
 
 **Explanation:** Opens the Postfix master configuration file which controls which services run on which ports.
 
-**📸 [TAKE SCREENSHOT]** - Show nano opened
+<img width="1644" height="159" alt="image" src="https://github.com/user-attachments/assets/41213e15-4013-4fef-804c-8ac15e5930ce" />
+
 
 ---
 
@@ -696,7 +722,7 @@ submission inet n       -       n       -       -       smtpd
 - `smtpd_sasl_auth_enable=yes`: Require authentication
 - Client must auth before sending mail
 
-**📸 [TAKE SCREENSHOT]** - Show submission configuration
+<img width="2232" height="722" alt="image" src="https://github.com/user-attachments/assets/40a04588-1bf6-4a7d-aa1a-91e8158a1299" />
 
 ---
 
@@ -718,13 +744,13 @@ smtps     inet  n       -       n       -       -       smtpd
 - `smtpd_tls_wrappermode=yes`: Immediate TLS (no STARTTLS, encrypted from start)
 - Also requires authentication before sending
 
-**📸 [TAKE SCREENSHOT]** - Show smtps configuration
+<img width="1867" height="695" alt="image" src="https://github.com/user-attachments/assets/27a02d9b-7134-44df-87eb-8805add01c3c" />
 
 ---
 
 **Save and Exit nano**
 
-**📸 [TAKE SCREENSHOT]** - Show save confirmation
+<img width="2324" height="379" alt="image" src="https://github.com/user-attachments/assets/543aac53-f963-4b36-ae6c-fb5893dc91df" />
 
 ---
 
@@ -740,7 +766,7 @@ sudo nano /etc/dovecot/conf.d/10-ssl.conf
 
 **Explanation:** Opens Dovecot's SSL configuration file where we specify certificate paths and SSL requirements.
 
-**📸 [TAKE SCREENSHOT]** - Show file opened
+<img width="1869" height="122" alt="image" src="https://github.com/user-attachments/assets/27fb6a4d-f260-4c36-b345-938ac3448b8b" />
 
 ---
 
@@ -760,13 +786,13 @@ ssl_min_protocol = TLSv1.2
 - Paths to our certificate and private key
 - `ssl_min_protocol`: Don't allow old insecure TLS versions
 
-**📸 [TAKE SCREENSHOT]** - Show SSL configuration
+<img width="2293" height="510" alt="image" src="https://github.com/user-attachments/assets/d8b3e924-35ee-499d-afe4-398182dc978e" />
 
 ---
 
 **Save and exit**
 
-**📸 [TAKE SCREENSHOT]** - Show save
+<img width="2326" height="239" alt="image" src="https://github.com/user-attachments/assets/afdc8b09-9757-4597-92f0-92ba523ede96" />
 
 ---
 
@@ -780,7 +806,10 @@ sudo nano /etc/dovecot/conf.d/10-auth.conf
 
 **Explanation:** Configures how Dovecot authenticates users (using system accounts).
 
-**📸 [TAKE SCREENSHOT]** - Show file opened
+<img width="1836" height="150" alt="image" src="https://github.com/user-attachments/assets/bb081858-c49e-40f7-a42a-13325e0246c2" />
+
+<img width="2559" height="1572" alt="image" src="https://github.com/user-attachments/assets/30bfec94-e90a-40af-b5a5-9f789b63797d" />
+
 
 ---
 
@@ -796,7 +825,10 @@ auth_mechanisms = plain login
 - `disable_plaintext_auth = yes`: Don't allow passwords over unencrypted connections
 - `auth_mechanisms = plain login`: Allow PLAIN and LOGIN auth methods (over TLS)
 
-**📸 [TAKE SCREENSHOT]** - Show auth configuration
+<img width="2049" height="320" alt="image" src="https://github.com/user-attachments/assets/fd2e5587-79de-45ef-b7cb-b7bf1904f16a" />
+
+<img width="2173" height="342" alt="image" src="https://github.com/user-attachments/assets/990d5aa2-80f9-458f-add2-a70301d081aa" />
+
 
 ---
 
@@ -814,7 +846,7 @@ sudo nano /etc/dovecot/conf.d/10-master.conf
 
 **Explanation:** Configures Dovecot to provide authentication socket for Postfix.
 
-**📸 [TAKE SCREENSHOT]** - Show file opened
+<img width="1887" height="105" alt="image" src="https://github.com/user-attachments/assets/852c2df6-1cc1-44ca-9fbf-901325d6767a" />
 
 ---
 
@@ -836,7 +868,7 @@ service auth {
 - `mode = 0660`: Postfix and Dovecot can read/write
 - `user/group = postfix`: Owned by postfix so it can access
 
-**📸 [TAKE SCREENSHOT]** - Show service auth configuration
+<img width="2416" height="1176" alt="image" src="https://github.com/user-attachments/assets/51e9453a-a1f5-45c6-b498-6ce6c387a6cf" />
 
 ---
 
@@ -856,7 +888,7 @@ sudo firewall-cmd --list-all
 
 **Explanation:** Shows current firewall configuration BEFORE making changes. Use this as a baseline.
 
-**📸 [TAKE SCREENSHOT]** - Show current firewall state
+<img width="1844" height="914" alt="image" src="https://github.com/user-attachments/assets/85f9fe39-64c9-4e50-ad61-40b2352646b8" />
 
 **What to document:**
 
@@ -874,7 +906,7 @@ sudo firewall-cmd --permanent --add-service=smtp
 
 **Explanation:** Opens port 25 (SMTP) for incoming connections. The `--permanent` flag makes this survive reboots.
 
-**📸 [TAKE SCREENSHOT]** - Show command and "success" output
+<img width="2002" height="242" alt="image" src="https://github.com/user-attachments/assets/8c810b22-8638-4e65-a29a-986aa99a51bd" />
 
 ---
 
@@ -886,7 +918,6 @@ sudo firewall-cmd --permanent --add-service=smtps
 
 **Explanation:** Opens port 465 (SMTPS - SMTP over TLS)
 
-**📸 [TAKE SCREENSHOT]** - Show command
 
 ---
 
