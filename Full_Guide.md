@@ -775,7 +775,7 @@ sudo nano /etc/dovecot/conf.d/10-mail.conf
 
 **Explanation:** Tells Dovecot where to find user emails. By default, it might be looking in the wrong place. We need to match the "Maildir" setting we just configured in Postfix.
 
-**📸 [TAKE SCREENSHOT]** - Show file opened
+<img width="1810" height="86" alt="image" src="https://github.com/user-attachments/assets/d22beab2-8356-45a0-87e2-879e210203c2" />
 
 ---
 
@@ -792,13 +792,13 @@ mail_location = maildir:~/Maildir
 - `maildir:`: Use the Maildir format (one file per email)
 - `~/Maildir`: Store emails in the "Maildir" folder inside each user's home directory (e.g., `/home/dineesh/Maildir`)
 
-**📸 [TAKE SCREENSHOT]** - Show modified mail_location line
+<img width="1057" height="244" alt="image" src="https://github.com/user-attachments/assets/cde6c42b-cbc8-4777-956f-67490ce2ea26" />
 
 ---
 
 **Save and exit**
 
-**📸 [TAKE SCREENSHOT]** - Show save
+<img width="1817" height="393" alt="image" src="https://github.com/user-attachments/assets/b9e84005-ba3a-49c3-9f19-45343130f238" />
 
 ---
 
