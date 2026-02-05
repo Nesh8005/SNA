@@ -1453,7 +1453,7 @@ sudo nano /etc/hosts
 
 **Explanation:** Opens Ubuntu's hosts file to add the mail server entry.
 
-**📸 [TAKE SCREENSHOT]** - Show nano opened
+<img width="1172" height="192" alt="image" src="https://github.com/user-attachments/assets/d64003fd-4071-4fc8-8699-a9a574f30c83" />
 
 ---
 
@@ -1465,7 +1465,7 @@ sudo nano /etc/hosts
 
 **Explanation:** Tells Ubuntu where to find the mail server by mapping the hostname to the IP address.
 
-**📸 [TAKE SCREENSHOT]** - Show edited hosts file
+<img width="1643" height="313" alt="image" src="https://github.com/user-attachments/assets/8e1b8612-71ae-4538-8aec-ca9d1b7480af" />
 
 **Save and exit**
 
@@ -1479,7 +1479,7 @@ cat /etc/hosts
 
 **Explanation:** Verify the entry was saved.
 
-**📸 [TAKE SCREENSHOT]** - Show hosts file with new entry
+<img width="1683" height="742" alt="image" src="https://github.com/user-attachments/assets/34571c35-1f98-4b8f-90d5-e97559f02c22" />
 
 ---
 
@@ -1493,7 +1493,7 @@ ping -c 3 bnaserver.bungkus.org
 
 **Explanation:** Verify name resolution and network connectivity to the mail server.
 
-**📸 [TAKE SCREENSHOT]** - Show ping results
+<img width="2428" height="637" alt="image" src="https://github.com/user-attachments/assets/5913146b-a093-4c0a-a4c9-0931caf8b3fc" />
 
 **What to document:**
 
@@ -1511,7 +1511,7 @@ telnet bnaserver.bungkus.org 25
 
 **Explanation:** Test TCP connectivity to SMTP port 25.
 
-**📸 [TAKE SCREENSHOT]** - Show connection and Postfix banner
+<img width="1499" height="339" alt="image" src="https://github.com/user-attachments/assets/5cd57efe-74b2-45cb-9568-9d3d727cfae1" />
 
 **What to document:**
 
@@ -1529,7 +1529,10 @@ openssl s_client -connect bnaserver.bungkus.org:993
 
 **Explanation:** Test encrypted connection to IMAPS port 993 and verify the SSL certificate.
 
-**📸 [TAKE SCREENSHOT]** - Show TLS connection and certificate
+<img width="1985" height="105" alt="image" src="https://github.com/user-attachments/assets/7c452f98-7829-4f1b-9365-d849a6cd61be" />
+
+<img width="2258" height="1488" alt="image" src="https://github.com/user-attachments/assets/426c550c-c3b1-47a5-9235-6ea49dce3ed1" />
+
 
 **What to document:**
 
@@ -1547,7 +1550,9 @@ openssl s_client -connect bnaserver.bungkus.org:993
 **If using browser:**
 Visit: <https://www.thunderbird.net/>
 
-**📸 [TAKE SCREENSHOT]** - Show download page
+<img width="2539" height="233" alt="image" src="https://github.com/user-attachments/assets/2a12d926-7766-44c1-b39e-c82aa1fca3de" />
+
+<img width="2426" height="1238" alt="image" src="https://github.com/user-attachments/assets/3700c775-d24f-453d-ad1d-c8aa2041d4a1" />
 
 ---
 
@@ -1560,7 +1565,7 @@ wget https://download.mozilla.org/?product=thunderbird-latest-ssl&os=linux64&lan
 
 **Explanation:** Downloads the latest Thunderbird directly to your Downloads folder.
 
-**📸 [TAKE SCREENSHOT]** - Show download progress
+<img width="1244" height="344" alt="image" src="https://github.com/user-attachments/assets/c758ba46-3a07-432b-8eb6-5e049d8dd2ea" />
 
 ---
 
@@ -1570,12 +1575,12 @@ wget https://download.mozilla.org/?product=thunderbird-latest-ssl&os=linux64&lan
 
 ```bash
 cd ~/Downloads
-tar -xvf thunderbird*.tar.bz2
+tar -xvf thunderbird*.tar.xz
 ```
 
 **Explanation:** Extracts the Thunderbird archive. The `*` wildcard matches any version number.
 
-**📸 [TAKE SCREENSHOT]** - Show extraction process
+<img width="1890" height="643" alt="image" src="https://github.com/user-attachments/assets/387d79c3-6b93-4b20-9add-fae990d5b9fa" />
 
 **What to document:**
 
