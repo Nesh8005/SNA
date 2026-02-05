@@ -1416,6 +1416,13 @@ A4 LOGOUT
 - `A3 FETCH 1 BODY[]`: Retrieve full body of message 1
 - `A4 LOGOUT`: Close connection
 
+<img width="2528" height="326" alt="image" src="https://github.com/user-attachments/assets/90a2b859-cbb9-44ff-84a0-e948a8fd12f0" />
+
+<img width="2396" height="510" alt="image" src="https://github.com/user-attachments/assets/8485fdd2-c3fc-4ae0-87aa-ada29edee300" />
+
+<img width="1838" height="887" alt="image" src="https://github.com/user-attachments/assets/c0563d46-f15c-43d6-a233-96e7a892b2b4" />
+
+<img width="1259" height="234" alt="image" src="https://github.com/user-attachments/assets/7d20f9a8-96fc-41ec-a596-0a4acc8c959a" />
 
 **What to document:**
 
