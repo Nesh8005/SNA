@@ -1643,7 +1643,7 @@ sudo firewall-cmd --add-port=80/tcp
 
 **Explanation:** Temporarily opens port 80 in the firewall. This is required because the firewall blocks all ports by default, and we need port 80 open for the Ubuntu client to connect and download the certificate.
 
-<img width="1800" height="200" alt="placeholder" src="https://via.placeholder.com/1800x200?text=Screenshot+showing+firewall-cmd+success" />
+<img width="1423" height="113" alt="image" src="https://github.com/user-attachments/assets/e179e6f3-62cc-4077-9b7c-2e58c5595704" />
 
 ---
 
