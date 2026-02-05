@@ -1416,7 +1416,6 @@ A4 LOGOUT
 - `A3 FETCH 1 BODY[]`: Retrieve full body of message 1
 - `A4 LOGOUT`: Close connection
 
-**📸 [TAKE SCREENSHOT]** - Show successful login and email retrieval
 
 **What to document:**
 
