@@ -1,4 +1,4 @@
-<img width="1569" height="384" alt="image" src="https://github.com/user-attachments/assets/944c2ce1-0a72-4253-80ab-8f48198f13f0" /># 📧 SMTP Mail Server Setup Lab - Fresh Installation Guide
+# 📧 SMTP Mail Server Setup Lab - Fresh Installation Guide
 
 ## Complete Step-by-Step with Screenshot & Explanation Requirements
 
@@ -69,7 +69,7 @@ sudo adduser dineesh
 
 **Explanation:** Creates a new system user account named "dineesh" that will be used for email authentication. Mail servers use Linux system accounts for user authentication.
 
-<img width="1320" height="213" alt="Screenshot 2026-02-05 090259" src="https://github.com/user-attachments/assets/62f983c9-1ff1-46ba-9c2f-3fac4adde1fa" />
+<img width="1320" height="213" alt="Screenshot 2026-02-05 090259" src="https://github.com/user-attachments/assets/384e72c5-a5a1-42f0-9115-d06b14108052" />
 
 **What to document:**
 
@@ -87,7 +87,7 @@ sudo passwd dineesh
 
 **Explanation:** Sets the password "Lab2026" for the dineesh user account. This password will be used later for SMTP/IMAP authentication when connecting with email clients.
 
-<img width="1569" height="384" alt="image" src="https://github.com/user-attachments/assets/f463af07-763c-4431-b506-c7714c1cef52" />
+<img width="1569" height="384" alt="Screenshot 2026-02-05 091115" src="https://github.com/user-attachments/assets/b71a21fe-df88-4cf3-8120-29f38dea7112" />
 
 **What to document:**
 
@@ -110,7 +110,7 @@ sudo hostnamectl set-hostname bnaserver.bungkus.org
 - SSL certificates are issued to the FQDN
 - Other mail servers use this for routing
 
-<img width="2074" height="184" alt="image" src="https://github.com/user-attachments/assets/59ba24d9-ed6d-43d5-b45a-4cce4d18dd6d" />
+<img width="2074" height="184" alt="Screenshot 2026-02-05 091311" src="https://github.com/user-attachments/assets/555efc67-d7bd-4c9e-9fdc-82847b697bbb" />
 
 ---
 
@@ -122,7 +122,7 @@ hostnamectl
 
 **Explanation:** Verifies the hostname was set correctly. This displays system information including the static hostname, which should now be "bnaserver.bungkus.org".
 
-<img width="1523" height="809" alt="image" src="https://github.com/user-attachments/assets/fce03e1a-6d2d-4658-82ff-7498347bd219" />
+<img width="1523" height="809" alt="Screenshot 2026-02-05 091411" src="https://github.com/user-attachments/assets/47f329a0-9e59-4baf-8e76-5ab1e5d90385" />
 
 **What to document:**
 
@@ -140,7 +140,7 @@ hostname -f
 
 **Explanation:** Displays only the FQDN (Fully Qualified Domain Name). This is a quick way to verify the hostname is correct before proceeding.
 
-<img width="948" height="192" alt="image" src="https://github.com/user-attachments/assets/00c8546e-1097-4183-82fa-b5e1a63ced4b" />
+<img width="948" height="192" alt="Screenshot 2026-02-05 091438" src="https://github.com/user-attachments/assets/72db8e84-30b5-466c-b4e3-8d424b7dbd01" />
 
 **Expected Output:** `bnaserver.bungkus.org`
 
@@ -156,9 +156,9 @@ sudo nano /etc/hosts
 
 **Explanation:** Opens the hosts file for editing. This file maps IP addresses to hostnames locally, allowing the server to resolve its own hostname without DNS.
 
-<img width="1242" height="146" alt="image" src="https://github.com/user-attachments/assets/0ef13bdf-d160-4155-8e61-11e5a22e915a" />
+<img width="1242" height="146" alt="Screenshot 2026-02-05 091525" src="https://github.com/user-attachments/assets/9a1a0a64-72bb-47e0-b4c0-b089c22e88a0" />
 
-<img width="2531" height="1529" alt="image" src="https://github.com/user-attachments/assets/1535006a-0369-47df-8089-7becd49c1771" />
+<img width="2531" height="1529" alt="Screenshot 2026-02-05 091601" src="https://github.com/user-attachments/assets/f84f8b68-c2a4-4b2e-a9d3-cce78f9c3651" />
 
 
 ---
@@ -175,7 +175,7 @@ sudo nano /etc/hosts
 - This is essential for the mail server to identify itself correctly
 - Without this, services may fail to start or malfunction
 
-<img width="2230" height="271" alt="image" src="https://github.com/user-attachments/assets/8f756ac6-0c03-4a9a-a69c-3d331ad8a67b" />
+<img width="2226" height="277" alt="Screenshot 2026-02-05 091648" src="https://github.com/user-attachments/assets/839505f1-3441-4693-9332-c8b76dddce1a" />
 
 **What to document:**
 
@@ -190,7 +190,7 @@ sudo nano /etc/hosts
 - Press `Enter` (Confirm filename)
 - Press `Ctrl + X` (Exit)
 
-<img width="2359" height="261" alt="image" src="https://github.com/user-attachments/assets/c74b1cb3-bbf7-4f6f-a4c4-1f19e203790f" />
+<img width="2359" height="261" alt="Screenshot 2026-02-05 091753" src="https://github.com/user-attachments/assets/ffaa4f5a-77d8-4ba1-995f-de4af5ec2f8e" />
 
 ---
 
@@ -202,7 +202,7 @@ cat /etc/hosts
 
 **Explanation:** Displays the contents of the hosts file to verify your changes were saved correctly.
 
-<img width="2230" height="295" alt="image" src="https://github.com/user-attachments/assets/93cbb620-4759-48c3-9995-bc1904e3efee" />
+<img width="2230" height="295" alt="Screenshot 2026-02-05 091824" src="https://github.com/user-attachments/assets/8533d07e-0415-49c0-856f-61e9c0f3ee6e" />
 
 **What to document:**
 
@@ -221,7 +221,7 @@ ip addr show
 
 **Explanation:** Displays all network interfaces and their IP addresses. Use this to verify your server has the correct IP (192.168.200.3) assigned.
 
-<img width="2535" height="819" alt="image" src="https://github.com/user-attachments/assets/8d2c441a-ffa3-4d92-bd75-c3cb45e5f394" />
+<img width="2535" height="819" alt="Screenshot 2026-02-05 092005" src="https://github.com/user-attachments/assets/6e3beb8e-8abb-4896-904c-dc7505d93abb" />
 
 **What to document:**
 
@@ -239,81 +239,34 @@ ip route
 
 **Explanation:** Shows the routing table, including the default gateway. This is critical - we learned that hostname changes can sometimes remove the gateway!
 
-<img width="2288" height="264" alt="image" src="https://github.com/user-attachments/assets/b3d35ea3-a438-498f-95f8-c1e829dcbd9d" />
+<img width="2288" height="264" alt="Screenshot 2026-02-05 092024" src="https://github.com/user-attachments/assets/99c5b36e-b837-4b08-aebc-c4ad0542e444" />
 
 **What to document:**
 
-- Default route via 192.168.200.2
-- Local network route
-
-**🚨 IMPORTANT:** If you don't see "default via 192.168.200.2", you need to add it!
-
----
-
-**Command (if gateway is missing):**
-
-```bash
-sudo ip route add default via 192.168.200.2 dev enp0s3
-```
-
-**Explanation:** Manually adds the default gateway to the routing table. Replace "enp0s3" with your actual interface name from `ip addr show`. This tells the server where to send traffic destined for the internet.
-
-<img width="2169" height="126" alt="image" src="https://github.com/user-attachments/assets/a2d3d408-b76f-4934-8480-43695523eb46" />
-
----
-
-**Command:**
-
-```bash
-ip route
-```
-
-**Explanation:** Check the routing table again after adding the gateway. You might see TWO default gateways now (one you just added manually via 192.168.200.2, and possibly one from DHCP via 192.168.200.1). We need to clean this up to avoid routing conflicts.
-
-<img width="2267" height="311" alt="image" src="https://github.com/user-attachments/assets/e1d62c85-a140-47bf-99e5-d1787375f449" />
-
-**What to document:**
-
-- Check if you see two "default via" lines  
-- One pointing to 192.168.200.2 (manual - this is correct)
-- One pointing to 192.168.200.1 (DHCP - needs to be removed)
-
----
-
-**Command (only if you see a duplicate gateway via 192.168.200.1):**
-
-```bash
-sudo ip route del default via 192.168.200.1
-```
-
-**Explanation:** Removes the duplicate default gateway created by DHCP. We only want ONE default gateway (192.168.200.2) to avoid routing conflicts and ensure all traffic goes through the correct gateway.
-
-<img width="1864" height="131" alt="image" src="https://github.com/user-attachments/assets/551dbd1b-2b1c-4d3f-a316-483a92a64290" />
-
----
-
-**Command:**
-
-```bash
-ip route
-```
-
-**Explanation:** Verify the routing table is now clean with only ONE default gateway pointing to the correct address (192.168.200.2).
-
-<img width="2328" height="268" alt="image" src="https://github.com/user-attachments/assets/673daf1d-af68-438b-8017-a91c6a41b81f" />
-
-**What to document:**
-
-- Should see only ONE "default via 192.168.200.2" line
+- Default route (check if you have "default via 192.168.200.X" - could be .1 or .2)
 - Local network route (192.168.200.0/24)
-- No duplicate routes
 
-**Expected Output:**
+**🚨 IMPORTANT:** If you don't see ANY "default via" line, you need to add one!
 
+---
+
+**Command (ONLY if NO default gateway exists):**
+
+```bash
+sudo ip route add default via 192.168.200.1 dev enp0s3
 ```
-default via 192.168.200.2 dev enp0s3
-192.168.200.0/24 dev enp0s3 proto kernel scope link src 192.168.200.3
-```
+
+**Explanation:** Manually adds the default gateway to the routing table. Replace "enp0s3" with your actual interface name from `ip addr show`.
+
+**Note:** Most VirtualBox NAT networks use 192.168.200.1 as the gateway. If you already had a gateway (like .2), keep whatever you have - don't delete it! Only run this command if the gateway was completely missing.
+
+**📸 [TAKE SCREENSHOT]** - Show command execution (only if you had to add it)
+
+**What to document:**
+
+- Whether you had to add the gateway or it was already there
+- Which gateway IP is being used (.1 or .2)
+- Confirmation internet will work with this gateway
 
 ---
 
@@ -1799,5 +1752,3 @@ matches our hostname, confirming the certificate was generated correctly.
 ---
 
 **Good luck with your lab documentation! You've got this! 🚀**
-
-
