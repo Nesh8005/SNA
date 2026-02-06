@@ -1783,6 +1783,8 @@ You have successfully:
 
 ---
 
+Troubleshooting
+
 
 PROBLEM: "Failed to Find Settings" Error
 Thunderbird couldn't auto-detect the server settings and displayed a warning banner.
@@ -1804,7 +1806,3 @@ Attempted to use the "Add Exception" dialog with location https://bnaserver.bung
 <img width="470" height="213" alt="image" src="https://github.com/user-attachments/assets/0d5f35f2-b407-4ad1-a6e5-a61212deb6ae" />
 FAILED: Same "No Information Available" hang occurred. The issue: using https:// protocol for a mail server and OCSP validation timeout.
 
-
-
-
->>>>>>> 99ed0a4bbee2a8f3b62e0925b040910756056942
