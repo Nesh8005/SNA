@@ -1829,3 +1829,27 @@ matches our hostname, confirming the certificate was generated correctly.
 ---
 
 **Good luck with your lab documentation! You've got this! 🚀**
+
+
+PROBLEM: "Failed to Find Settings" Error
+Thunderbird couldn't auto-detect the server settings and displayed a warning banner.
+<img width="681" height="1012" alt="image" src="https://github.com/user-attachments/assets/ced25139-fc3a-44d1-a0bf-2881c16c98d7" />
+
+
+
+PROBLEM #1: "No Information Available" Certificate Hang
+When trying to add a security exception, Thunderbird displayed "Unable to obtain identification status for this site" and hung indefinitely.
+<img width="481" height="138" alt="image" src="https://github.com/user-attachments/assets/4c5976bb-404c-47b8-883f-555052d98688" />
+<img width="464" height="113" alt="image" src="https://github.com/user-attachments/assets/883d3a8a-b036-47d2-86c5-cb0be71310c7" />
+
+PROBLEM #2: "Checking Password" Infinite Loop
+Even after attempting to bypass the certificate screen, Thunderbird got stuck on "Checking password..."
+<img width="661" height="336" alt="image" src="https://github.com/user-attachments/assets/c712dd66-9206-4cb2-bf2c-ad89eb7e7526" />
+
+
+Attempted to use the "Add Exception" dialog with location https://bnaserver.bungkus.org:993:
+<img width="470" height="213" alt="image" src="https://github.com/user-attachments/assets/0d5f35f2-b407-4ad1-a6e5-a61212deb6ae" />
+FAILED: Same "No Information Available" hang occurred. The issue: using https:// protocol for a mail server and OCSP validation timeout.
+
+
+
